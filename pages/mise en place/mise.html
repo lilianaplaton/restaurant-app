@@ -1,0 +1,2090 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="">
+    <title>kb-recipes</title>
+    <link href="/styles.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
+</head>
+<style>
+    .mise {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+        text-align: center;
+        margin-bottom: 110px;
+    }
+
+    h1 {
+        font-size: 60px;
+        padding: 30px 0 40px;
+    }
+
+    /* search button */
+
+    .search {
+        position: relative;
+        display: block;
+        width: 80%;
+    }
+
+    #search-input {
+        border-radius: 20px;
+        border: 1px solid rgba(60, 112, 99, 0.09);
+        box-shadow: 2px 2px 0.9px 0px rgba(60, 112, 99, 0.31);
+        padding: 10px 15px;
+        font-size: 16px;
+        width: 100%;
+        overflow: hidden;
+    }
+
+    #search-button {
+        padding: 8px 18px;
+        font-size: 10px;
+        background-color: #d0eeda;
+        color: #fff;
+        border: none;
+        border-radius: 0 25px 25px 0;
+        cursor: pointer;
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: auto;
+    }
+
+    /* filtering mise en place buttons */
+
+    .filter-buttons li {
+        list-style-type: none;
+    }
+
+    .filter-buttons ul {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        text-align: center;
+    }
+
+    .filter-buttons {
+        background-color: #E9F9EE;
+        border-radius: 18px;
+        width: 90%;
+        padding: 14px;
+        margin: 25px 0 25px 0;
+    }
+
+    .fill {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        cursor: pointer;
+        margin: 5px;
+    }
+
+    .fill img {
+        background-color: white;
+        border-radius: 12px;
+        padding: 8px;
+        height: 60px;
+        width: 60px;
+        transition: ease-in .2s;
+    }
+
+    .icon-img {
+        width: 100%;
+        height: auto;
+    }
+
+    .fill img:hover {
+        background-color: #3C7063;
+    }
+
+    .txt {
+        font-size: 11px;
+        padding-top: 5px;
+    }
+
+    .txt:hover {
+        font-weight: 700;
+        color: #3C7063;
+    }
+
+    /* mise en place buttons */
+
+    .buttons {
+        width: 87%;
+    }
+
+    .btn-txt {
+        display: flex;
+        align-items: center;
+        border-radius: 10px;
+        border: 1.5px solid #EBEBEB;
+        box-shadow: 2px 2px 0px 0px rgba(224, 224, 224, 0.96);
+        margin: 9px 0;
+        padding: 10px 20px;
+        cursor: pointer;
+    }
+
+    .btn-txt:hover {
+        background-color: #d0eedabe;
+        transition: ease-in .2s;
+    }
+
+    .btn-txt h3,
+    .btn-txt p {
+        display: inline;
+        align-items: center;
+        text-align: center;
+    }
+
+    .btn-txt h3 {
+        color: rgba(0, 0, 0, 0.70);
+        font-size: 18px;
+        margin-right: 18px;
+    }
+
+    .btn-txt p {
+        font-size: 14px;
+    }
+</style>
+
+<body>
+
+    <!--__________________________ mise en place _________________________-->
+
+    <section class="mise" id="mise">
+
+        <div class="titlu">
+            <h1>Mise en place</h1>
+        </div>
+        <!-- search bar -->
+        <div class="search">
+            <input type="text" id="search-input" placeholder="Caută preparat...">
+            <button id="search-button">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+        </div>
+        <!-- filter butons -->
+        <div class="filter-buttons">
+            <ul id="filter-btns">
+                <li class="fill" data-target="salate"><img src="/img/recipes/icons/salad.png" class="icon-img">
+                    <div class="txt">Salate</div>
+                </li>
+                <li class="fill" data-target="tartinaj"><img src="/img/recipes/icons/quesadilla.png" class="icon-img">
+                    <div class="txt">Tartinaj</div>
+                </li>
+                <li class="fill" data-target="pas"><img src="/img/recipes/icons/pas.png" class="icon-img">
+                    <div class="txt">Pas</div>
+                </li>
+                <li class="fill" data-target="prajeli"><img src="/img/recipes/icons/fryer.png" class="icon-img">
+                    <div class="txt">Prăjeli</div>
+                </li>
+                <li class="fill" data-target="grill"><img src="/img/recipes/icons/meat.png" class="icon-img">
+                    <div class="txt">Grill</div>
+                </li>
+                <li class="fill" data-target="paste"><img src="/img/recipes/icons/lasagna.png" class="icon-img">
+                    <div class="txt">Paste</div>
+                </li>
+                <li class="fill" data-target="pizzav"><img src="/img/recipes/icons/pizzav.png" class="icon-img">
+                    <div class="txt">Pizza V</div>
+                </li>
+                <li class="fill" data-target="pizzac"><img src="/img/recipes/icons/pizzac.png" class="icon-img">
+                    <div class="txt">Pizza C</div>
+                </li>
+                <li class="fill" data-target="preparare"><img src="/img/recipes/icons/cutting.png" class="icon-img">
+                    <div class="txt">Preparare</div>
+                </li>
+                <li class="fill" data-target="desert"><img src="/img/recipes/icons/desert.png" class="icon-img">
+                    <div class="txt">Desert</div>
+                </li>
+            </ul>
+        </div>
+
+        <!--_______________________________________________________ SALATE _______________________________________________________-->
+
+        <div class="buttons">
+
+            <!-- humus -->
+            <div class="item" data-id="salate">
+                <div class="inner">
+                    <a href="/pages/mise en place/salate/humus.pdf" target="_blank">
+                        <div class="btn-txt">
+                            <h3>01</h3>
+                            <p>Humus</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- salată de vinete cu/fără maioneză -->
+            <div class="item" data-id="salate">
+                <div class="inner">
+                    <a href="">
+                        <div class="btn-txt">
+                            <h3>02</h3>
+                            <p>Salata de vinete cu/fara maioneza</p>
+                        </div>
+                </div>
+                </a>
+            </div>
+            <!-- dressing caesar -->
+            <div class="item" data-id="salate">
+                <div class="inner">
+                    <a href="#">
+                        <div class="btn-txt">
+                            <h3>03</h3>
+                            <p>Dressing Caesar</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- rosii bruschete -->
+            <div class="item" data-id="salate">
+                <div class="inner">
+                    <a href="#">
+                        <div class="btn-txt">
+                            <h3>04</h3>
+                            <p>Rosii bruschete</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- salată de ciuperci -->
+            <div class="item" data-id="salate">
+                <div class="inner">
+                    <a href="#">
+                        <div class="btn-txt">
+                            <h3>05</h3>
+                            <p>Salata de ciuperci</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- pastă de măsline -->
+            <div class="item" data-id="salate">
+                <div class="inner">
+                    <a href="#">
+                        <div class="btn-txt">
+                            <h3>06</h3>
+                            <p>Pasta de masline</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- guacamole -->
+            <div class="item" data-id="salate">
+                <div class="inner">
+                    <a href="#">
+                        <div class="btn-txt">
+                            <h3>07</h3>
+                            <p>Guacamole</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- gravlax -->
+            <div class="item" data-id="salate">
+                <div class="inner">
+                    <a href="#">
+                        <div class="btn-txt">
+                            <h3>08</h3>
+                            <p>Gravlax</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- platou charcuterie -->
+            <div class="item" data-id="salate">
+                <div class="inner">
+                    <a href="#">
+                        <div class="btn-txt">
+                            <h3>09</h3>
+                            <p>Platou charcuterie</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- rosii cherry -->
+            <div class="item" data-id="salate">
+                <div class="inner">
+                    <a href="#">
+                        <div class="btn-txt">
+                            <h3>10</h3>
+                            <p>Rosii cherry</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- dressing de menta -->
+            <div class="item" data-id="salate">
+                <div class="inner">
+                    <a href="#">
+                        <div class="btn-txt">
+                            <h3>11</h3>
+                            <p>Dressing de menta</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- piept de pui julienne -->
+            <div class="item" data-id="salate">
+                <div class="inner">
+                    <a href="#">
+                        <div class="btn-txt">
+                            <h3>12</h3>
+                            <p>Piept de pui julienne</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- parmezan scalie -->
+            <div class="item" data-id="salate">
+                <div class="inner">
+                    <a href="#">
+                        <div class="btn-txt">
+                            <h3>13</h3>
+                            <p>Parmezan scalie</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- salata iceberg -->
+            <div class="item" data-id="salate">
+                <div class="inner">
+                    <a href="#">
+                        <div class="btn-txt">
+                            <h3>14</h3>
+                            <p>Salata iceberg</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- somon marinat in sfecla rosie -->
+            <div class="item" data-id="salate">
+                <div class="inner">
+                    <a href="#">
+                        <div class="btn-txt">
+                            <h3>15</h3>
+                            <p>Somon marinat in sfecla rosie</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- branza de capra -->
+            <div class="item" data-id="salate">
+                <div class="inner">
+                    <a href="#">
+                        <div class="btn-txt">
+                            <h3>16</h3>
+                            <p>Branza de capra</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- muraturi asortate -->
+            <div class="item" data-id="salate">
+                <div class="inner">
+                    <a href="#">
+                        <div class="btn-txt">
+                            <h3>17</h3>
+                            <p>Muraturi asortate</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- somon gravlax -->
+            <div class="item" data-id="salate">
+                <div class="inner">
+                    <a href="#">
+                        <div class="btn-txt">
+                            <h3>18</h3>
+                            <p>Somon gravlax</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- crema avocado -->
+            <div class="item" data-id="salate">
+                <div class="inner">
+                    <a href="#">
+                        <div class="btn-txt">
+                            <h3>19</h3>
+                            <p>Crema avocado</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- oua fierte -->
+            <div class="item" data-id="salate">
+                <div class="inner">
+                    <a href="#">
+                        <div class="btn-txt">
+                            <h3>20</h3>
+                            <p>Oua fierte</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <!--_______________________________________________________ TARTINAJ _______________________________________________________-->
+
+            <div class="item" data-id="tartinaj">
+                <div class="inner">
+                    <a href="#">
+                        <div class="btn-txt">
+                            <h3>01</h3>
+                            <p>Pui quesadilla</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- quesadilla vegetariana -->
+            <div class="item" data-id="tartinaj">
+                <div class="inner">
+                    <a href="#">
+                        <div class="btn-txt">
+                            <h3>02</h3>
+                            <p>Quesadilla vegetariana</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- rosii felii -->
+            <div class="item" data-id="tartinaj">
+                <div class="inner">
+                    <a href="#">
+                        <div class="btn-txt">
+                            <h3>03</h3>
+                            <p>Rosii felii</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- mix cas -->
+            <div class="item" data-id="tartinaj">
+                <div class="inner">
+                    <a href="#">
+                        <div class="btn-txt">
+                            <h3>04</h3>
+                            <p>Mix cas</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- castraveti murati felii -->
+            <div class="item" data-id="tartinaj">
+                <div class="inner">
+                    <a href="#">
+                        <div class="btn-txt">
+                            <h3>05</h3>
+                            <p>Castraveti murati felii</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- ceapa caramelizata -->
+            <div class="item" data-id="tartinaj">
+                <div class="inner">
+                    <a href="#">
+                        <div class="btn-txt">
+                            <h3>06</h3>
+                            <p>Ceapa caramelizata</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- salata iceberg burgeri -->
+            <div class="item" data-id="tartinaj">
+                <div class="inner">
+                    <a href="#">
+                        <div class="btn-txt">
+                            <h3>07</h3>
+                            <p>Salata iceberg burgeri</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- sos rose -->
+            <div class="item" data-id="tartinaj">
+                <div class="inner">
+                    <a href="#">
+                        <div class="btn-txt">
+                            <h3>08</h3>
+                            <p>Sos rose</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- sos tzatziki -->
+            <div class="item" data-id="tartinaj">
+                <div class="inner">
+                    <a href="#">
+                        <div class="btn-txt">
+                            <h3>09</h3>
+                            <p>Sos tzatziki</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- sos home salsa -->
+            <div class="item" data-id="tartinaj">
+                <div class="inner">
+                    <a href="#">
+                        <div class="btn-txt">
+                            <h3>10</h3>
+                            <p>Sos home salsa</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- dressing pesto cu maioneză -->
+            <div class="item" data-id="tartinaj">
+                <div class="inner">
+                    <a href="#">
+                        <div class="btn-txt">
+                            <h3>11</h3>
+                            <p>Dressing pesto cu maioneza</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- ceapă verde -->
+            <div class="item" data-id="tartinaj">
+                <div class="inner">
+                    <a href="#">
+                        <div class="btn-txt">
+                            <h3>12</h3>
+                            <p>Ceapa verde</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- rosii cuburi -->
+            <div class="item" data-id="tartinaj">
+                <div class="inner">
+                    <a href="#">
+                        <div class="btn-txt">
+                            <h3>13</h3>
+                            <p>Rosii cuburi</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- mix ardei R/G/V -->
+            <div class="item" data-id="tartinaj">
+                <div class="inner">
+                    <a href="#">
+                        <div class="btn-txt">
+                            <h3>14</h3>
+                            <p>Mix ardei (rosu/galben/verde)</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- salată de sfeclă rosie -->
+            <div class="item" data-id="tartinaj">
+                <div class="inner">
+                    <a href="#">
+                        <div class="btn-txt">
+                            <h3>15</h3>
+                            <p>Salata de sfecla rosie</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- salată coleslaw -->
+            <div class="item" data-id="tartinaj">
+                <div class="inner">
+                    <a href="#">
+                        <div class="btn-txt">
+                            <h3>16</h3>
+                            <p>Salata coleslaw</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- ragu vegan -->
+            <div class="item" data-id="tartinaj">
+                <div class="inner">
+                    <a href="#">
+                        <div class="btn-txt">
+                            <h3>17</h3>
+                            <p>Ragu vegan</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- ardei copt -->
+            <div class="item" data-id="tartinaj">
+                <div class="inner">
+                    <a href="#">
+                        <div class="btn-txt">
+                            <h3>18</h3>
+                            <p>Ardei copt</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- chifle de burgeri tăiate -->
+            <div class="item" data-id="tartinaj">
+                <div class="inner">
+                    <a href="#">
+                        <div class="btn-txt">
+                            <h3>19</h3>
+                            <p>Chifle de burgeri taiate</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <!--_______________________________________________________ PASTE _______________________________________________________-->
+
+            <!-- crispy de pui -->
+            <div class="item" data-id="paste">
+                <div class="inner">
+                    <a href="#">
+                        <div class="btn-txt">
+                            <h3>01</h3>
+                            <p>Crispy de pui</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- cartofi fry'n dip | inele de ceapă -->
+            <div class="item" data-id="paste">
+                <div class="inner">
+                    <a href="#">
+                        <div class="btn-txt">
+                            <h3>02</h3>
+                            <p>Cartofi fry'n dip | Inele de ceapa</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- pui asiatic -->
+            <div class="item" data-id="paste">
+                <div class="inner">
+                    <a href="#">
+                        <div class="btn-txt">
+                            <h3>03</h3>
+                            <p>Pui asiatic</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- midii -->
+            <div class="item" data-id="paste">
+                <div class="inner">
+                    <a href="#">
+                        <div class="btn-txt">
+                            <h3>04</h3>
+                            <p>Midii</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- somon -->
+            <div class="item" data-id="paste">
+                <div class="inner">
+                    <a href="#">
+                        <div class="btn-txt">
+                            <h3>05</h3>
+                            <p>Somon</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- cartofi aurii -->
+            <div class="item" data-id="paste">
+                <div class="inner">
+                    <a href="#">
+                        <div class="btn-txt">
+                            <h3>06</h3>
+                            <p>Cartofi aurii</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- jumeri -->
+            <div class="item" data-id="paste">
+                <div class="inner">
+                    <a href="#">
+                        <div class="btn-txt">
+                            <h3>07</h3>
+                            <p>Jumeri</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- meat balls -->
+            <div class="item" data-id="paste">
+                <div class="inner">
+                    <a href="#">
+                        <div class="btn-txt">
+                            <h3>08</h3>
+                            <p>Meat balls</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- cheese balls -->
+            <div class="item" data-id="paste">
+                <div class="inner">
+                    <a href="#">
+                        <div class="btn-txt">
+                            <h3>09</h3>
+                            <p>Cheese balls</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- sos aurora -->
+            <div class="item" data-id="paste">
+                <div class="inner">
+                    <a href="#">
+                        <div class="btn-txt">
+                            <h3>10</h3>
+                            <p>Sos Aurora</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- sos de rosii -->
+            <div class="item" data-id="paste">
+                <div class="inner">
+                    <a href="#">
+                        <div class="btn-txt">
+                            <h3>11</h3>
+                            <p>Sos de rosii</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- varza de bruxelles -->
+            <div class="item" data-id="paste">
+                <div class="inner">
+                    <a href="#">
+                        <div class="btn-txt">
+                            <h3>12</h3>
+                            <p>Varza de bruxelles</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- snitel vienez -->
+            <div class="item" data-id="paste">
+                <div class="inner">
+                    <a href="#">
+                        <div class="btn-txt">
+                            <h3>13</h3>
+                            <p>Snitel vienez</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- legume sote -->
+            <div class="item" data-id="paste">
+                <div class="inner">
+                    <a href="#">
+                        <div class="btn-txt">
+                            <h3>14</h3>
+                            <p>Legume sote</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- varză murata calita -->
+            <div class="item" data-id="paste">
+                <div class="inner">
+                    <a href="#">
+                        <div class="btn-txt">
+                            <h3>15</h3>
+                            <p>Varza murata calita</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- patrunjel -->
+            <div class="item" data-id="paste">
+                <div class="inner">
+                    <a href="#">
+                        <div class="btn-txt">
+                            <h3>16</h3>
+                            <p>Patrunjel</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <!--_______________________________________________________ PAS _______________________________________________________-->
+
+            <!-- varza rosie calita -->
+            <div class="item" data-id="pas">
+                <div class="inner">
+                    <a href="#">
+                        <div class="btn-txt">
+                            <h3>01</h3>
+                            <p>Varza rosie calita</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- orez ciorba -->
+            <div class="item" data-id="pas">
+                <div class="inner">
+                    <a href="#">
+                        <div class="btn-txt">
+                            <h3>02</h3>
+                            <p>Orez ciorba</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- jalapeno -->
+            <div class="item" data-id="pas">
+                <div class="inner">
+                    <a href="#">
+                        <div class="btn-txt">
+                            <h3>03</h3>
+                            <p>Jalapeno</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- salata de iaurt cu castraveti -->
+            <div class="item" data-id="pas">
+                <div class="inner">
+                    <a href="#">
+                        <div class="btn-txt">
+                            <h3>04</h3>
+                            <p>Salata de iaurt cu castraveti</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- patrunjel verde maruntit -->
+            <div class="item" data-id="pas">
+                <div class="inner">
+                    <a href="#">
+                        <div class="btn-txt">
+                            <h3>05</h3>
+                            <p>Patrunjel verde maruntit</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- sos de zmeura -->
+            <div class="item" data-id="pas">
+                <div class="inner">
+                    <a href="#">
+                        <div class="btn-txt">
+                            <h3>06</h3>
+                            <p>Sos de zmeura</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- sos gorgonzola -->
+            <div class="item" data-id="pas">
+                <div class="inner">
+                    <a href="#">
+                        <div class="btn-txt">
+                            <h3>07</h3>
+                            <p>Sos gorgonzola</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- sos marinol BBQ ribs -->
+            <div class="item" data-id="pas">
+                <div class="inner">
+                    <a href="#">
+                        <div class="btn-txt">
+                            <h3>08</h3>
+                            <p>Sos marinol BBQ ribs</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- sos sweet chilli -->
+            <div class="item" data-id="pas">
+                <div class="inner">
+                    <a href="#">
+                        <div class="btn-txt">
+                            <h3>09</h3>
+                            <p>Sos sweet chilli</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- sos mustar cu miere -->
+            <div class="item" data-id="pas">
+                <div class="inner">
+                    <a href="#">
+                        <div class="btn-txt">
+                            <h3>10</h3>
+                            <p>Sos mustar cu miere</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- sos de usturoi -->
+            <div class="item" data-id="pas">
+                <div class="inner">
+                    <a href="#">
+                        <div class="btn-txt">
+                            <h3>11</h3>
+                            <p>Sos de usturoi</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- mărar taiat -->
+            <div class="item" data-id="pas">
+                <div class="inner">
+                    <a href="#">
+                        <div class="btn-txt">
+                            <h3>12</h3>
+                            <p>Marar taiat</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- sos de iaurt cu usturoi -->
+            <div class="item" data-id="pas">
+                <div class="inner">
+                    <a href="#">
+                        <div class="btn-txt">
+                            <h3>13</h3>
+                            <p>Sos de iaurt cu usturoi</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- salata ciolomada -->
+            <div class="item" data-id="pas">
+                <div class="inner">
+                    <a href="#">
+                        <div class="btn-txt">
+                            <h3>14</h3>
+                            <p>Salata ciolomada</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- ceapă murată -->
+            <div class="item" data-id="pas">
+                <div class="inner">
+                    <a href="#">
+                        <div class="btn-txt">
+                            <h3>15</h3>
+                            <p>Ceapa murata</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- castraveti murati cornisori -->
+            <div class="item" data-id="pas">
+                <div class="inner">
+                    <a href="#">
+                        <div class="btn-txt">
+                            <h3>16</h3>
+                            <p>Castraveti murati cornisori</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- ceapa rosie julienne -->
+            <div class="item" data-id="pas">
+                <div class="inner">
+                    <a href="#">
+                        <div class="btn-txt">
+                            <h3>17</h3>
+                            <p>Ceapa rosie julienne</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- sos de tomate -->
+            <div class="item" data-id="pas">
+                <div class="inner">
+                    <a href="#">
+                        <div class="btn-txt">
+                            <h3>18</h3>
+                            <p>Sos de tomate</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- condiment cartofi -->
+            <div class="item" data-id="pas">
+                <div class="inner">
+                    <a href="#">
+                        <div class="btn-txt">
+                            <h3>19</h3>
+                            <p>Condiment cartofi</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- dressing de usturoi cu patrunjel -->
+            <div class="item" data-id="pas">
+                <div class="inner">
+                    <a href="#">
+                        <div class="btn-txt">
+                            <h3>20</h3>
+                            <p>Dressing de usturoi cu patrunjel</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- parmezan ras -->
+            <div class="item" data-id="pas">
+                <div class="inner">
+                    <a href="#">
+                        <div class="btn-txt">
+                            <h3>21</h3>
+                            <p>Parmezan ras</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- dressing chimichurii -->
+            <div class="item" data-id="pas">
+                <div class="inner">
+                    <a href="#">
+                        <div class="btn-txt">
+                            <h3>22</h3>
+                            <p>Dressing chimichurii</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- piure de cartofi -->
+            <div class="item" data-id="pas">
+                <div class="inner">
+                    <a href="#">
+                        <div class="btn-txt">
+                            <h3>23</h3>
+                            <p>Piure de cartofi</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- sos porto -->
+            <div class="item" data-id="pas">
+                <div class="inner">
+                    <a href="#">
+                        <div class="btn-txt">
+                            <h3>24</h3>
+                            <p>Sos Porto</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- peperonata -->
+            <div class="item" data-id="pas">
+                <div class="inner">
+                    <a href="#">
+                        <div class="btn-txt">
+                            <h3>25</h3>
+                            <p>Peperonata</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- sos olandez -->
+            <div class="item" data-id="pas">
+                <div class="inner">
+                    <a href="#">
+                        <div class="btn-txt">
+                            <h3>26</h3>
+                            <p>Sos olandez</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- mix de salata -->
+            <div class="item" data-id="pas">
+                <div class="inner">
+                    <a href="#">
+                        <div class="btn-txt">
+                            <h3>27</h3>
+                            <p>Mix de salata</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- dressing coriandru si lamaie -->
+            <div class="item" data-id="pas">
+                <div class="inner">
+                    <a href="#">
+                        <div class="btn-txt">
+                            <h3>28</h3>
+                            <p>Dressing coriandru si lamaie</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <!--_______________________________________________________ GRILL _______________________________________________________-->
+
+            <!-- pancetta felii -->
+            <div class="item" data-id="grill">
+                <div class="inner">
+                    <a href="#">
+                        <div class="btn-txt">
+                            <h3>01</h3>
+                            <p>Pancetta felii</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- cheddar felii -->
+            <div class="item" data-id="grill">
+                <div class="inner">
+                    <a href="#">
+                        <div class="btn-txt">
+                            <h3>02</h3>
+                            <p>Cheddar felii</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- piept de pui caesar -->
+            <div class="item" data-id="grill">
+                <div class="inner">
+                    <a href="#">
+                        <div class="btn-txt">
+                            <h3>03</h3>
+                            <p>Piept de pui Caesar</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- cartofi copți -->
+            <div class="item" data-id="grill">
+                <div class="inner">
+                    <a href="#">
+                        <div class="btn-txt">
+                            <h3>04</h3>
+                            <p>Cartofi copti</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- tapas cu vita -->
+            <div class="item" data-id="grill">
+                <div class="inner">
+                    <a href="#">
+                        <div class="btn-txt">
+                            <h3>05</h3>
+                            <p>Tapas cu vita</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- halloumi la gratar -->
+            <div class="item" data-id="grill">
+                <div class="inner">
+                    <a href="#">
+                        <div class="btn-txt">
+                            <h3>06</h3>
+                            <p>Halloumi la gratar</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- bbq ribs-->
+            <div class="item" data-id="grill">
+                <div class="inner">
+                    <a href="#">
+                        <div class="btn-txt">
+                            <h3>07</h3>
+                            <p>BBQ Ribs</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- brisket de vita -->
+            <div class="item" data-id="grill">
+                <div class="inner">
+                    <a href="#">
+                        <div class="btn-txt">
+                            <h3>08</h3>
+                            <p>Brisket de vita (pulled beef)</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- fleica de porc -->
+            <div class="item" data-id="grill">
+                <div class="inner">
+                    <a href="#">
+                        <div class="btn-txt">
+                            <h3>09</h3>
+                            <p>Fleica de porc</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- somon la grill -->
+            <div class="item" data-id="grill">
+                <div class="inner">
+                    <a href="#">
+                        <div class="btn-txt">
+                            <h3>10</h3>
+                            <p>Somon la grill</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- carnati cu cas -->
+            <div class="item" data-id="grill">
+                <div class="inner">
+                    <a href="#">
+                        <div class="btn-txt">
+                            <h3>11</h3>
+                            <p>Carnati cu cas</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- gorgonzola felii -->
+            <div class="item" data-id="grill">
+                <div class="inner">
+                    <a href="#">
+                        <div class="btn-txt">
+                            <h3>12</h3>
+                            <p>Gorgonzola felii</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <!--____________________________________________________ PIZZA CUPTOR ____________________________________________________-->
+
+            <!-- tarta de pui -->
+            <div class="item" data-id="pizzac">
+                <div class="inner">
+                    <a href="#" target="_blank">
+                        <div class="btn-txt">
+                            <h3>01</h3>
+                            <p>Tarta de pui</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- tarta de somon -->
+            <div class="item" data-id="pizzac">
+                <div class="inner">
+                    <a href="#" target="_blank">
+                        <div class="btn-txt">
+                            <h3>02</h3>
+                            <p>Tarta de somon</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- lasagna -->
+            <div class="item" data-id="pizzac">
+                <div class="inner">
+                    <a href="#" target="_blank">
+                        <div class="btn-txt">
+                            <h3>03</h3>
+                            <p>Lasagna</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- pala affumicata -->
+            <div class="item" data-id="pizzac">
+                <div class="inner">
+                    <a href="#" target="_blank">
+                        <div class="btn-txt">
+                            <h3>04</h3>
+                            <p>Pala affumicata</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- pala contadina -->
+            <div class="item" data-id="pizzac">
+                <div class="inner">
+                    <a href="#" target="_blank">
+                        <div class="btn-txt">
+                            <h3>05</h3>
+                            <p>Pala contadina</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- pala nobila -->
+            <div class="item" data-id="pizzac">
+                <div class="inner">
+                    <a href="#" target="_blank">
+                        <div class="btn-txt">
+                            <h3>06</h3>
+                            <p>Pala nobila</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- pala regina -->
+            <div class="item" data-id="pizzac">
+                <div class="inner">
+                    <a href="#" target="_blank">
+                        <div class="btn-txt">
+                            <h3>07</h3>
+                            <p>Pala regina</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- speck -->
+            <div class="item" data-id="pizzac">
+                <div class="inner">
+                    <a href="#" target="_blank">
+                        <div class="btn-txt">
+                            <h3>08</h3>
+                            <p>Speck</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- sos pesto -->
+            <div class="item" data-id="pizzac">
+                <div class="inner">
+                    <a href="#" target="_blank">
+                        <div class="btn-txt">
+                            <h3>09</h3>
+                            <p>Sos pesto</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- guanchala -->
+            <div class="item" data-id="pizzac">
+                <div class="inner">
+                    <a href="#" target="_blank">
+                        <div class="btn-txt">
+                            <h3>10</h3>
+                            <p>Guanchala</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- taleggio -->
+            <div class="item" data-id="pizzac">
+                <div class="inner">
+                    <a href="#" target="_blank">
+                        <div class="btn-txt">
+                            <h3>11</h3>
+                            <p>Taleggio</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- cartofi fierti -->
+            <div class="item" data-id="pizzac">
+                <div class="inner">
+                    <a href="#" target="_blank">
+                        <div class="btn-txt">
+                            <h3>12</h3>
+                            <p>Cartofi fierti</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- cremă tartufată -->
+            <div class="item" data-id="pizzac">
+                <div class="inner">
+                    <a href="#" target="_blank">
+                        <div class="btn-txt">
+                            <h3>13</h3>
+                            <p>Crema tartufata</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- roșii uscate in ulei de masline -->
+            <div class="item" data-id="pizzac">
+                <div class="inner">
+                    <a href="#" target="_blank">
+                        <div class="btn-txt">
+                            <h3>14</h3>
+                            <p>Rosii uscate in ulei de masline</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- gorgonzola -->
+            <div class="item" data-id="pizzac">
+                <div class="inner">
+                    <a href="#" target="_blank">
+                        <div class="btn-txt">
+                            <h3>16</h3>
+                            <p>Gorgonzola</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- scuacherone -->
+            <div class="item" data-id="pizzac">
+                <div class="inner">
+                    <a href="#" target="_blank">
+                        <div class="btn-txt">
+                            <h3>18</h3>
+                            <p>Scuacherone</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- prosciutto crudo -->
+            <div class="item" data-id="pizzac">
+                <div class="inner">
+                    <a href="#" target="_blank">
+                        <div class="btn-txt">
+                            <h3>19</h3>
+                            <p>Prosciutto crudo</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- sos de roșii -->
+            <div class="item" data-id="pizzac">
+                <div class="inner">
+                    <a href="#" target="_blank">
+                        <div class="btn-txt">
+                            <h3>20</h3>
+                            <p>Sos de rosii</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- aluat -->
+            <div class="item" data-id="pizzac">
+                <div class="inner">
+                    <a href="#" target="_blank">
+                        <div class="btn-txt">
+                            <h3>21</h3>
+                            <p>Aluat</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- alune -->
+            <div class="item" data-id="pizzac">
+                <div class="inner">
+                    <a href="#" target="_blank">
+                        <div class="btn-txt">
+                            <h3>17</h3>
+                            <p>Alune</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- rucola -->
+            <div class="item" data-id="pizzac">
+                <div class="inner">
+                    <a href="#" target="_blank">
+                        <div class="btn-txt">
+                            <h3>15</h3>
+                            <p>Rucola</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <!--____________________________________________________ PREPARARE ____________________________________________________-->
+
+            <!-- ragu -->
+            <div class="item" data-id="preparare">
+                <div class="inner">
+                    <a href="#" target="_blank">
+                        <div class="btn-txt">
+                            <h3>01</h3>
+                            <p>Ragu</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- pateu de rata -->
+            <div class="item" data-id="preparare">
+                <div class="inner">
+                    <a href="#" target="_blank">
+                        <div class="btn-txt">
+                            <h3>02</h3>
+                            <p>Pateu de rata</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- brisket -->
+            <div class="item" data-id="preparare">
+                <div class="inner">
+                    <a href="#" target="_blank">
+                        <div class="btn-txt">
+                            <h3>03</h3>
+                            <p>Brisket</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- gravlax cu crema de branza -->
+            <div class="item" data-id="preparare">
+                <div class="inner">
+                    <a href="#" target="_blank">
+                        <div class="btn-txt">
+                            <h3>04</h3>
+                            <p>Gravlax cu crema de branza</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- ciolan de porc -->
+            <div class="item" data-id="preparare">
+                <div class="inner">
+                    <a href="#" target="_blank">
+                        <div class="btn-txt">
+                            <h3>05</h3>
+                            <p>Ciolan de porc</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- cocosel de munte -->
+            <div class="item" data-id="preparare">
+                <div class="inner">
+                    <a href="#" target="_blank">
+                        <div class="btn-txt">
+                            <h3>06</h3>
+                            <p>Cocosel de munte</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- cas emmentaler -->
+            <div class="item" data-id="preparare">
+                <div class="inner">
+                    <a href="#" target="_blank">
+                        <div class="btn-txt">
+                            <h3>07</h3>
+                            <p>Cas emmentaler</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- ciorba de pui a la grec -->
+            <div class="item" data-id="preparare">
+                <div class="inner">
+                    <a href="#" target="_blank">
+                        <div class="btn-txt">
+                            <h3>08</h3>
+                            <p>Ciorba de pui a la grec</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- gulas unguresc -->
+            <div class="item" data-id="preparare">
+                <div class="inner">
+                    <a href="#" target="_blank">
+                        <div class="btn-txt">
+                            <h3>09</h3>
+                            <p>Gulas unguresc</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- ciorba taraneasca -->
+            <div class="item" data-id="preparare">
+                <div class="inner">
+                    <a href="#" target="_blank">
+                        <div class="btn-txt">
+                            <h3>10</h3>
+                            <p>Ciorba taraneasca</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- pulpa de rata -->
+            <div class="item" data-id="preparare">
+                <div class="inner">
+                    <a href="#" target="_blank">
+                        <div class="btn-txt">
+                            <h3>11</h3>
+                            <p>Pulpa de rata</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- somon file porționat -->
+            <div class="item" data-id="preparare">
+                <div class="inner">
+                    <a href="#" target="_blank">
+                        <div class="btn-txt">
+                            <h3>12</h3>
+                            <p>Somon file portionat</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- coasta de vita black angus -->
+            <div class="item" data-id="preparare">
+                <div class="inner">
+                    <a href="#" target="_blank">
+                        <div class="btn-txt">
+                            <h3>13</h3>
+                            <p>Coasta de vita Black Angus</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- pastila cheeseburger -->
+            <div class="item" data-id="preparare">
+                <div class="inner">
+                    <a href="#" target="_blank">
+                        <div class="btn-txt">
+                            <h3>14</h3>
+                            <p>Pastila Cheeseburger</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- pastila chicken burger -->
+            <div class="item" data-id="preparare">
+                <div class="inner">
+                    <a href="#" target="_blank">
+                        <div class="btn-txt">
+                            <h3>15</h3>
+                            <p>Pastila Chicken Burger</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- pastila chicken burger -->
+            <div class="item" data-id="preparare">
+                <div class="inner">
+                    <a href="#" target="_blank">
+                        <div class="btn-txt">
+                            <h3>16</h3>
+                            <p>Pastila American Burger</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <!--____________________________________________________ PRĂJELI ____________________________________________________-->
+
+            <!-- halloumi pane -->
+            <div class="item" data-id="prajeli">
+                <div class="inner">
+                    <a href="#" target="_blank">
+                        <div class="btn-txt">
+                            <h3>01</h3>
+                            <p>Halloumi pane</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- calamari pane -->
+            <div class="item" data-id="prajeli">
+                <div class="inner">
+                    <a href="#" target="_blank">
+                        <div class="btn-txt">
+                            <h3>02</h3>
+                            <p>Calamari pane</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- pleurotus pane -->
+            <div class="item" data-id="prajeli">
+                <div class="inner">
+                    <a href="#" target="_blank">
+                        <div class="btn-txt">
+                            <h3>03</h3>
+                            <p>Pleurotus pane</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <!--____________________________________________________ PIZZA VATRĂ ____________________________________________________-->
+
+            <!-- sos de rosii pizza -->
+            <div class="item" data-id="pizzav">
+                <div class="inner">
+                    <a href="#" target="_blank">
+                        <div class="btn-txt">
+                            <h3>01</h3>
+                            <p>Sos de rosii pizza</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- salam picant felii -->
+            <div class="item" data-id="pizzav">
+                <div class="inner">
+                    <a href="#" target="_blank">
+                        <div class="btn-txt">
+                            <h3>02</h3>
+                            <p>Salam picant felii (Chorizo)</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- ciuperci felii -->
+            <div class="item" data-id="pizzav">
+                <div class="inner">
+                    <a href="#" target="_blank">
+                        <div class="btn-txt">
+                            <h3>03</h3>
+                            <p>Ciuperci felii</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- salam de vara -->
+            <div class="item" data-id="pizzav">
+                <div class="inner">
+                    <a href="#" target="_blank">
+                        <div class="btn-txt">
+                            <h3>04</h3>
+                            <p>Salam de vara</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- cabanos felii -->
+            <div class="item" data-id="pizzav">
+                <div class="inner">
+                    <a href="#" target="_blank">
+                        <div class="btn-txt">
+                            <h3>05</h3>
+                            <p>Cabanos felii</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- ceapă verde felii -->
+            <div class="item" data-id="pizzav">
+                <div class="inner">
+                    <a href="#" target="_blank">
+                        <div class="btn-txt">
+                            <h3>06</h3>
+                            <p>Ceapa verde felii</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- legume ortolana -->
+            <div class="item" data-id="pizzav">
+                <div class="inner">
+                    <a href="#" target="_blank">
+                        <div class="btn-txt">
+                            <h3>07</h3>
+                            <p>Legume ortolana</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- mozzarella ras -->
+            <div class="item" data-id="pizzav">
+                <div class="inner">
+                    <a href="#" target="_blank">
+                        <div class="btn-txt">
+                            <h3>08</h3>
+                            <p>Mozzarella ras</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- prosciutto cotto -->
+            <div class="item" data-id="pizzav">
+                <div class="inner">
+                    <a href="#" target="_blank">
+                        <div class="btn-txt">
+                            <h3>09</h3>
+                            <p>Prosciutto cotto</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- anghinare -->
+            <div class="item" data-id="pizzav">
+                <div class="inner">
+                    <a href="#" target="_blank">
+                        <div class="btn-txt">
+                            <h3>10</h3>
+                            <p>Anghinare</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- masline felii -->
+            <div class="item" data-id="pizzav">
+                <div class="inner">
+                    <a href="#" target="_blank">
+                        <div class="btn-txt">
+                            <h3>11</h3>
+                            <p>Masline felii</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- mujdei usturoi -->
+            <div class="item" data-id="pizzav">
+                <div class="inner">
+                    <a href="#" target="_blank">
+                        <div class="btn-txt">
+                            <h3>12</h3>
+                            <p>Mujdei usturoi</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- sunca felii -->
+            <div class="item" data-id="pizzav">
+                <div class="inner">
+                    <a href="#" target="_blank">
+                        <div class="btn-txt">
+                            <h3>13</h3>
+                            <p>Sunca felii</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- taleggio -->
+            <div class="item" data-id="pizzav">
+                <div class="inner">
+                    <a href="#" target="_blank">
+                        <div class="btn-txt">
+                            <h3>14</h3>
+                            <p>Taleggio</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- ton -->
+            <div class="item" data-id="pizzav">
+                <div class="inner">
+                    <a href="#" target="_blank">
+                        <div class="btn-txt">
+                            <h3>15</h3>
+                            <p>Ton</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- ceapa rosie -->
+            <div class="item" data-id="pizzav">
+                <div class="inner">
+                    <a href="#" target="_blank">
+                        <div class="btn-txt">
+                            <h3>16</h3>
+                            <p>Ceapa rosie</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- porumb -->
+            <div class="item" data-id="pizzav">
+                <div class="inner">
+                    <a href="#" target="_blank">
+                        <div class="btn-txt">
+                            <h3>17</h3>
+                            <p>Porumb</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <!--____________________________________________________ DESERT ____________________________________________________-->
+
+            <!-- inghetata de vanilie -->
+            <div class="item" data-id="desert">
+                <div class="inner">
+                    <a href="#" target="_blank">
+                        <div class="btn-txt">
+                            <h3>01</h3>
+                            <p>Inghetata de vanilie</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- lava cake -->
+            <div class="item" data-id="desert">
+                <div class="inner">
+                    <a href="#" target="_blank">
+                        <div class="btn-txt">
+                            <h3>02</h3>
+                            <p>Lava cake</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- pavlova -->
+            <div class="item" data-id="desert">
+                <div class="inner">
+                    <a href="#" target="_blank">
+                        <div class="btn-txt">
+                            <h3>03</h3>
+                            <p>Pavlova</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- cheesecake -->
+            <div class="item" data-id="desert">
+                <div class="inner">
+                    <a href="#" target="_blank">
+                        <div class="btn-txt">
+                            <h3>04</h3>
+                            <p>Cheesecake</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- cheesecake vegan -->
+            <div class="item" data-id="desert">
+                <div class="inner">
+                    <a href="#" target="_blank">
+                        <div class="btn-txt">
+                            <h3>05</h3>
+                            <p>Cheesecake vegan</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- tiramisu -->
+            <div class="item" data-id="desert">
+                <div class="inner">
+                    <a href="#" target="_blank">
+                        <div class="btn-txt">
+                            <h3>06</h3>
+                            <p>Tiramisu</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- tarta cu caramel -->
+            <div class="item" data-id="desert">
+                <div class="inner">
+                    <a href="#" target="_blank">
+                        <div class="btn-txt">
+                            <h3>07</h3>
+                            <p>Tarta cu caramel</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- Buturuga -->
+            <div class="item" data-id="desert">
+                <div class="inner">
+                    <a href="#" target="_blank">
+                        <div class="btn-txt">
+                            <h3>08</h3>
+                            <p>Buturuga</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+
+        </div>
+    </section>
+
+
+    <!-- navbar -->
+    <nav class=" navbar">
+        <ul class="navbar-items">
+            <li class="navbar-item"> <a href="/index.html" class="navbar-link active-link">
+                    <i class="fa-solid fa-house"></i>
+                    <p class="navbar-text">Acasă</p>
+                </a> </li>
+            <li class="navbar-item"> <a href="../recipes/recipes.html" class="navbar-link">
+                    <i class="fa-solid fa-bell-concierge"></i>
+                    <p class="navbar-text">À la carte</p>
+                </a> </li>
+            <li class="navbar-item"> <a href="#mise" class="navbar-link">
+                    <i class="fa-solid fa-utensils"></i>
+                    <p class="navbar-text">Mise en place</p>
+                </a> </li>
+            <li class="navbar-item"> <a href="/pages/rules.html" class="navbar-link">
+                    <i class="fa-solid fa-scale-balanced"></i>
+                    <p class="navbar-text">Regulament</p>
+                </a> </li>
+            <li class="navbar-item"> <a href="/pages/knowledge.html" class="navbar-link">
+                    <i class="fa-solid fa-mobile-screen"></i>
+                    <p class="navbar-text">Informații</p>
+                </a> </li>
+        </ul>
+    </nav>
+
+    <!-- javascript_search mise en place button -->
+
+    <script>
+        const searchInput = document.getElementById('search-input');
+        const searchButton = document.getElementById('search-button');
+        searchButton.addEventListener('click', () => {
+            const query = searchInput.value.toLowerCase();
+            const recipeItems = document.querySelectorAll('.buttons .item');
+            recipeItems.forEach(item => {
+                const text = item.textContent.toLowerCase();
+                if (text.includes(query)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+
+        document.getElementById('search-button').addEventListener('click', function () {
+            const searchInput = document.getElementById('search-input');
+            const searchText = searchInput.value.trim();
+            if (searchText) {
+                console.log('Căutare pentru:', searchText);
+            } else {
+                alert('Câmpul de căutare este gol. Vă rugăm să introduceți un termen de căutare.');
+            }
+        });
+    </script>
+
+
+
+    <!-- javascript_filter mise en place buttons -->
+
+    <script>
+        const filterButtons = document.querySelector("#filter-btns").children;
+        const items = document.querySelector(".buttons").children;
+
+        for (let i = 0; i < filterButtons.length; i++) {
+            filterButtons[i].addEventListener("click", function () {
+                for (let j = 0; j < filterButtons.length; j++) {
+                    filterButtons[j].classList.remove("active")
+                }
+                this.classList.add("active");
+                const target = this.getAttribute("data-target")
+
+                for (let k = 0; k < items.length; k++) {
+                    items[k].style.display = "none";
+                    if (target == items[k].getAttribute("data-id")) {
+                        items[k].style.display = "block";
+                    }
+                    if (target == "all") {
+                        items[k].style.display = "block";
+                    }
+                }
+            })
+        }
+    </script>
+
+</body>
+
+</html>

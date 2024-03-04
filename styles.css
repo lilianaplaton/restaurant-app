@@ -1,0 +1,177 @@
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Inter:wght@100..900&family=Quicksand:wght@300..700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: "Inter", sans-serif;
+    font-weight: 500;
+    color: #000;
+}
+
+/*________________________ home page ________________________*/
+
+/* content */
+
+.container {
+    width: 100%;
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+    flex-direction: column;
+    object-fit: cover;
+    gap: 50px;
+}
+
+.logo img {
+    padding-top: 40px;
+    width: 100%;
+    height: auto;
+}
+
+.chef {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.chef img {
+    width: 100%;
+    height: auto;
+}
+
+.select {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 15px;
+}
+
+h1 {
+    font-family: "Amatic SC", sans-serif;
+    font-weight: 400;
+    font-size: 45px;
+    margin-bottom: 10px;
+}
+
+h4 {
+    font-size: 20px;
+    font-family: Quicksand;
+    font-weight: 400;
+    letter-spacing: 0.6px;
+}
+
+/* languages */
+
+.languages button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #FFF;
+    border-radius: 10px;
+    border: none;
+    box-shadow: 0px 1px 1.5px 1px rgba(0, 0, 0, 0.08);
+    padding: 12px 28px;
+    cursor: pointer;
+    margin: auto;
+    margin-bottom: 15px;
+    transition: ease-in .1s;
+}
+
+.languages button:hover {
+    background-color: #E9F9EE;
+}
+
+.btn-ro img,
+.btn-en img {
+    margin-right: 25px;
+    width: 30px;
+}
+
+.btn-ro p,
+.btn-en p {
+    color: rgba(38, 50, 56, 0.85);
+    font-size: 15px;
+}
+
+/* navbar */
+
+.navbar {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 999;
+    border-radius: 35px 35px 0 0;
+}
+
+.navbar-items {
+    display: flex;
+    justify-content: space-around;
+    margin: 17px 5px 10px 5px;
+}
+
+.navbar-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.navbar-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.fa-solid {
+    font-size: 25px;
+    opacity: 0.6;
+}
+
+.navbar-text {
+    font-size: 11px;
+    letter-spacing: 0.3px;
+    font-weight: 400;
+    padding: 8px;
+    transition: ease-in .1s;
+    color: #000;
+    opacity: 0.8;
+}
+
+
+.fa-solid:hover {
+    opacity: 1;
+}
+
+
+/* images */
+
+.images {
+    position: relative;
+}
+
+.pan {
+    width: 150px;
+    position: absolute;
+    bottom: 20px;
+    right: 100px;
+}
+
+.cute {
+    position: absolute;
+    bottom: 220px;
+    left: 120px;
+}
+
+.meat {
+    position: absolute;
+    bottom: 15px;
+    left: 160px;
+}
+
+
+/*________________________ breakpoints ________________________*/

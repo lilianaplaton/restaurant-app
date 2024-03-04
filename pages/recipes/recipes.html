@@ -1,0 +1,1253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="">
+    <title>kb-recipes</title>
+    <link href="/styles.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
+    <script src="/script.js" defer></script>
+</head>
+
+<style>
+    .recipes {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 80vh;
+        object-fit: cover;
+        align-items: center;
+        text-align: center;
+    }
+
+    h1 {
+        font-size: 60px;
+        padding: 30px 0 40px;
+    }
+
+    /* search button */
+
+    .search {
+        position: relative;
+        display: block;
+        width: 80%;
+    }
+
+    #search-input {
+        border-radius: 20px;
+        border: 1px solid rgba(60, 112, 99, 0.09);
+        box-shadow: 2px 2px 0.9px 0px rgba(60, 112, 99, 0.31);
+        padding: 10px 15px;
+        font-size: 16px;
+        width: 100%;
+        overflow: hidden;
+    }
+
+    #search-button {
+        padding: 8px 18px;
+        font-size: 10px;
+        background-color: #d0eeda;
+        color: #fff;
+        border: none;
+        border-radius: 0 25px 25px 0;
+        cursor: pointer;
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: auto;
+    }
+
+
+    /* filtering recipes */
+
+    .filter-buttons li {
+        list-style-type: none;
+    }
+
+    .filter-buttons ul {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        text-align: center;
+    }
+
+    .filter-buttons {
+        background-color: #E9F9EE;
+        border-radius: 18px;
+        width: 90%;
+        padding: 14px;
+        margin: 25px 0 25px 0;
+    }
+
+    .fill {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        cursor: pointer;
+        margin: 5px;
+    }
+
+    .fill img {
+        background-color: white;
+        border-radius: 12px;
+        padding: 8px;
+        height: 60px;
+        width: 60px;
+        transition: ease-in .2s;
+    }
+
+    .icon-img {
+        width: 100%;
+        height: auto;
+    }
+
+    .fill img:hover {
+        background-color: #3C7063;
+    }
+
+    .txt {
+        font-size: 11px;
+        padding-top: 5px;
+    }
+
+    .txt:hover {
+        font-weight: 700;
+        color: #3C7063;
+    }
+
+    /* gallery recipes */
+
+    .gallery {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        margin: 0 30px;
+        margin-bottom: 110px;
+    }
+
+    .container1 {
+        border-radius: 13px;
+        background: #FFF;
+        box-shadow: 1px 1px 9px 0px rgba(224, 224, 224, 0.73);
+        transition: ease-in .2s;
+        margin: 8px;
+    }
+
+    .container1:hover {
+        box-shadow: 2px 2px 10px 0px rgba(203, 201, 201, 0.839);
+    }
+
+    .container1 img {
+        width: 100%;
+        height: auto;
+    }
+
+    .text {
+        font-size: 15px;
+    }
+
+    .sectie {
+        color: rgba(85, 85, 85, 0.80);
+        font-size: 13px;
+        font-weight: 400;
+        padding: 5px 0 15px;
+    }
+</style>
+
+<body>
+
+    <!--__________________________ recipes _________________________-->
+
+    <section class="recipes" id="recipes">
+
+        <div class="titlu">
+            <h1>À La Carte</h1>
+        </div>
+        <!-- search bar -->
+        <div class="search">
+            <input type="text" id="search-input" placeholder="Caută rețetă...">
+            <button id="search-button">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+        </div>
+        <!-- filter butons -->
+        <div class="filter-buttons">
+            <ul id="filter-btns">
+                <li class="active fill" data-target="all"><img src="/img/recipes/icons/chef.png" class="icon-img">
+                    <div class="txt">Toate</div>
+                </li>
+                <li class="fill" data-target="salate"><img src="/img/recipes/icons/salad.png" class="icon-img">
+                    <div class="txt">Salate</div>
+                </li>
+                <li class="fill" data-target="tartinaj"><img src="/img/recipes/icons/quesadilla.png" class="icon-img">
+                    <div class="txt">Tartinaj</div>
+                </li>
+                <li class="fill" data-target="prajeli"><img src="/img/recipes/icons/fryer.png" class="icon-img">
+                    <div class="txt">Prăjeli</div>
+                </li>
+                <li class="fill" data-target="grill"><img src="/img/recipes/icons/meat.png" class="icon-img">
+                    <div class="txt">Grill</div>
+                </li>
+                <li class="fill" data-target="paste"><img src="/img/recipes/icons/lasagna.png" class="icon-img">
+                    <div class="txt">Paste</div>
+                </li>
+                <li class="fill" data-target="pizzav"><img src="/img/recipes/icons/pizzav.png" class="icon-img">
+                    <div class="txt">Pizza V</div>
+                </li>
+                <li class="fill" data-target="pas"><img src="/img/recipes/icons/pas.png" class="icon-img">
+                    <div class="txt">Pas</div>
+                </li>
+                <li class="fill" data-target="pizzac"><img src="/img/recipes/icons/pizzac.png" class="icon-img">
+                    <div class="txt">Pizza C</div>
+                </li>
+                <li class="fill" data-target="desert"><img src="/img/recipes/icons/desert.png" class="icon-img">
+                    <div class="txt">Desert</div>
+                </li>
+            </ul>
+        </div>
+
+        <!-- gallery recipes -->
+        <div class="row">
+            <div class="gallery">
+
+                <!--_______________________________________________________ SALATE _______________________________________________________-->
+
+                <!-- salata di bufala -->
+                <div class="item" data-id="salate">
+                    <div class="inner">
+                        <div class="container1">
+                            <a href="/pages/recipes/salate/di bufala.pdf">
+                                <img src="/img/recipes/salate/di bufala.png" alt="salata di bufala" class="image">
+                                <div class="overlay">
+                                    <div class="text">Salata di bufala</div>
+                                    <div class="sectie">Salate</div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- salata vegetariana -->
+                <div class="item" data-id="salate">
+                    <div class="inner">
+                        <div class="container1">
+                            <a href="/pages/recipes/salate/vegetariana.pdf">
+                                <img src="/img/recipes/salate/salata vegetariana.png" alt="salata vegetariana"
+                                    class="image">
+                                <div class="overlay">
+                                    <div class="text">Salata vegetariana</div>
+                                    <div class="sectie">Salate</div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- salata caesar -->
+                <div class="item" data-id="salate">
+                    <div class="inner">
+                        <div class="container1">
+                            <a href="/pages/recipes/salate/caesar.pdf">
+                                <img src="/img/recipes/salate/salata caesar.png" alt="salata caesar" class="image">
+                                <div class="overlay">
+                                    <div class="text">Salata Caesar</div>
+                                    <div class="sectie">Salate</div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- humus -->
+                <div class="item" data-id="salate">
+                    <div class="inner">
+                        <div class="container1">
+                            <img src="/img/recipes/salate/humus.jpeg" alt="humus" class="image">
+                            <div class="overlay">
+                                <div class="text">Humus</div>
+                                <div class="sectie">Salate</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- platou charcuterie -->
+                <div class="item" data-id="salate">
+                    <div class="inner">
+                        <div class="container1">
+                            <img src="/img/recipes/salate/platou charcuterie.png" alt="platou charcuterie"
+                                class="image">
+                            <div class="overlay">
+                                <div class="text">Platou charcuterie</div>
+                                <div class="sectie">Salate</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- platou mixt -->
+                <div class="item" data-id="salate">
+                    <div class="inner">
+                        <div class="container1">
+                            <img src="/img/recipes/salate/platou mixt.png" alt="platou mixt" class="image">
+                            <div class="overlay">
+                                <div class="text">Platou mixt</div>
+                                <div class="sectie">Salate</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- nachos -->
+                <div class="item" data-id="salate">
+                    <div class="inner">
+                        <div class="container1">
+                            <img src="/img/recipes/salate/nachos.png" alt="nachos" class="image">
+                            <div class="overlay">
+                                <div class="text">Nachos</div>
+                                <div class="sectie">Salate</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- salata de vinete -->
+                <div class="item" data-id="salate">
+                    <div class="inner">
+                        <div class="container1">
+                            <img src="/img/recipes/salate/salata de vinete.png" alt="salata de vinete" class="image">
+                            <div class="overlay">
+                                <div class="text">Salata de vinete</div>
+                                <div class="sectie">Salate</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- bruschete cu rosii -->
+                <div class="item" data-id="salate">
+                    <div class="inner">
+                        <div class="container1">
+                            <img src="/img/recipes/salate/bruschete.png" alt="bruschete cu rosii" class="image">
+                            <div class="overlay">
+                                <div class="text">Bruschete cu rosii</div>
+                                <div class="sectie">Salate</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- gravlax -->
+                <div class="item" data-id="salate">
+                    <div class="inner">
+                        <div class="container1">
+                            <img src="/img/recipes/salate/gravlax.png" alt="gravlax" class="image">
+                            <div class="overlay">
+                                <div class="text">Gravlax</div>
+                                <div class="sectie">Salate</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- pasta de ciuperci -->
+                <div class="item" data-id="salate">
+                    <div class="inner">
+                        <div class="container1">
+                            <img src="/img/recipes/salate/pasta de ciuperci.png" alt="pasta de ciuperci" class="image">
+                            <div class="overlay">
+                                <div class="text">Pasta de ciuperci</div>
+                                <div class="sectie">Salate</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- pasta de masline -->
+                <div class="item" data-id="salate">
+                    <div class="inner">
+                        <div class="container1">
+                            <img src="/img/recipes/salate/pasta de masline.png" alt="pasta de masline" class="image">
+                            <div class="overlay">
+                                <div class="text">Pasta de masline</div>
+                                <div class="sectie">Salate</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- salata cu somon gravlax -->
+                <div class="item" data-id="salate">
+                    <div class="inner">
+                        <div class="container1">
+                            <img src="/img/recipes/salate/salata cu somon gravlax.png" alt="salata cu somon gravlax"
+                                class="image">
+                            <div class="overlay">
+                                <div class="text">Salata cu somon gravlax</div>
+                                <div class="sectie">Salate</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- platou klausen burger-->
+                <div class="item" data-id="salate">
+                    <div class="inner">
+                        <div class="container1">
+                            <img src="/img/recipes/salate/logo.png" alt="platou klausen burger" class="image">
+                            <div class="overlay">
+                                <div class="text">Platou Klausen Burger</div>
+                                <div class="sectie">Salate</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- pateu de rata-->
+                <div class="item" data-id="salate">
+                    <div class="inner">
+                        <div class="container1">
+                            <img src="/img/recipes/salate/img.png" alt="" class="image">
+                            <div class="overlay">
+                                <div class="text">Pateu de rata</div>
+                                <div class="sectie">Salate</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- masline-->
+                <div class="item" data-id="salate">
+                    <div class="inner">
+                        <div class="container1">
+                            <img src="/img/recipes/salate/img.png" alt="" class="image">
+                            <div class="overlay">
+                                <div class="text">Masline</div>
+                                <div class="sectie">Salate</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- paine alba cu maia-->
+                <div class="item" data-id="salate">
+                    <div class="inner">
+                        <div class="container1">
+                            <img src="/img/recipes/salate/img.png" alt="" class="image">
+                            <div class="overlay">
+                                <div class="text">Paine alba cu maia</div>
+                                <div class="sectie">Salate</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- paine seminte de in cu maia-->
+                <div class="item" data-id="salate">
+                    <div class="inner">
+                        <div class="container1">
+                            <img src="/img/recipes/salate/img.png" alt="" class="image">
+                            <div class="overlay">
+                                <div class="text">Paine cu seminte de in</div>
+                                <div class="sectie">Salate</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--_____________________________________________________ TARTINAJ _____________________________________________________-->
+
+                <!-- quesadilla de pui -->
+                <div class="item" data-id="tartinaj">
+                    <div class="inner">
+                        <div class="container1">
+                            <img src="/img/recipes/tartinaj/quesadilla.png" alt="quesadilla de pui" class="image">
+                            <div class="overlay">
+                                <div class="text">Quesadilla de pui</div>
+                                <div class="sectie">Tartinaj</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- quesadilla vegetariana -->
+                <div class="item" data-id="tartinaj">
+                    <div class="inner">
+                        <div class="container1">
+                            <img src="/img/recipes/tartinaj/quesadilla vegetariana.png" alt="" class="image">
+                            <div class="overlay">
+                                <div class="text">Quesadilla vegetariana</div>
+                                <div class="sectie">Tartinaj</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--_______________________________________________________ GRILL _______________________________________________________-->
+
+                <!-- cheeseburger -->
+                <div class="item" data-id="grill">
+                    <div class="inner">
+                        <div class="container1">
+                            <img src="/img/recipes/grill/cheeseburger.png" alt="cheeseburger" class="image">
+                            <div class="overlay">
+                                <div class="text">Cheeseburger</div>
+                                <div class="sectie">Grill</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- cocosel de munte -->
+                <div class="item" data-id="grill">
+                    <div class="inner">
+                        <div class="container1">
+                            <img src="/img/recipes/grill/cocosel de munte.png" alt="cocosel de munte" class="image">
+                            <div class="overlay">
+                                <div class="text">Cocosel de munte</div>
+                                <div class="sectie">Grill</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- pulpa de rata -->
+                <div class="item" data-id="grill">
+                    <div class="inner">
+                        <div class="container1">
+                            <img src="/img/recipes/grill/pulpa de rata.png" alt="pulpa de rata" class="image">
+                            <div class="overlay">
+                                <div class="text">Pulpa de rata</div>
+                                <div class="sectie">Grill</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- american burger -->
+                <div class="item" data-id="grill">
+                    <div class="inner">
+                        <div class="container1">
+                            <img src="/img/recipes/grill/american burger.png" alt="american burger" class="image">
+                            <div class="overlay">
+                                <div class="text">American burger</div>
+                                <div class="sectie">Grill</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- chicken burger -->
+                <div class="item" data-id="grill">
+                    <div class="inner">
+                        <div class="container1">
+                            <img src="/img/recipes/grill/chicken burger.png" alt="chicken burger" class="image">
+                            <div class="overlay">
+                                <div class="text">Chicken burger</div>
+                                <div class="sectie">Grill</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ciolan cu os -->
+                <div class="item" data-id="grill">
+                    <div class="inner">
+                        <div class="container1">
+                            <img src="/img/recipes/grill/ciolan cu os.png" alt="ciolan cu os" class="image">
+                            <div class="overlay">
+                                <div class="text">Ciolan de porc</div>
+                                <div class="sectie">Grill</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- bbq ribs -->
+                <div class="item" data-id="grill">
+                    <div class="inner">
+                        <div class="container1">
+                            <img src="/img/recipes/grill/bbq ribs.png" alt="bbq ribs" class="image">
+                            <div class="overlay">
+                                <div class="text">BBQ Ribs</div>
+                                <div class="sectie">Grill</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- halloumi pane burger -->
+                <div class="item" data-id="grill">
+                    <div class="inner">
+                        <div class="container1">
+                            <img src="/img/recipes/grill/halloumi pane.png" alt="halloumi pane burger" class="image">
+                            <div class="overlay">
+                                <div class="text">Halloumi pane burger</div>
+                                <div class="sectie">Grill</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- gorgonzola beef burger -->
+                <div class="item" data-id="grill">
+                    <div class="inner">
+                        <div class="container1">
+                            <img src="/img/recipes/grill/gorgonzola beef burger.png" alt="gorgonzola beef burger"
+                                class="image">
+                            <div class="overlay">
+                                <div class="text">Gorgonzola beef burger</div>
+                                <div class="sectie">Grill</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- halloumi la gratar -->
+                <div class="item" data-id="grill">
+                    <div class="inner">
+                        <div class="container1">
+                            <img src="/img/recipes/grill/halloumi la grill.png" alt="halloumi la grill" class="image">
+                            <div class="overlay">
+                                <div class="text">Halloumi la gratar</div>
+                                <div class="sectie">Grill</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- somon -->
+                <div class="item" data-id="grill">
+                    <div class="inner">
+                        <div class="container1">
+                            <img src="/img/recipes/grill/somon.png" alt="somon" class="image">
+                            <div class="overlay">
+                                <div class="text">Somon</div>
+                                <div class="sectie">Grill</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- tapas cu vita -->
+                <div class="item" data-id="grill">
+                    <div class="inner">
+                        <div class="container1">
+                            <img src="/img/recipes/grill/tapas cu vita.png" alt="tapas cu vita" class="image">
+                            <div class="overlay">
+                                <div class="text">Tapas cu vita</div>
+                                <div class="sectie">Grill</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- brisket -->
+                <div class="item" data-id="grill">
+                    <div class="inner">
+                        <div class="container1">
+                            <img src="/img/recipes/grill/brisket.png" alt="brisket" class="image">
+                            <div class="overlay">
+                                <div class="text">Brisket</div>
+                                <div class="sectie">Grill</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- fleica de porc -->
+                <div class="item" data-id="grill">
+                    <div class="inner">
+                        <div class="container1">
+                            <img src="/img/recipes/grill/img.png" alt="" class="image">
+                            <div class="overlay">
+                                <div class="text">Fleica de porc</div>
+                                <div class="sectie">Grill</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- carnati cu cas -->
+                <div class="item" data-id="grill">
+                    <div class="inner">
+                        <div class="container1">
+                            <img src="/img/recipes/grill/img.png" alt="" class="image">
+                            <div class="overlay">
+                                <div class="text">Carnati cu cas</div>
+                                <div class="sectie">Grill</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- pulled beef burger -->
+                <div class="item" data-id="grill">
+                    <div class="inner">
+                        <div class="container1">
+                            <img src="/img/recipes/grill/img.png" alt="" class="image">
+                            <div class="overlay">
+                                <div class="text">Pulled beef burger</div>
+                                <div class="sectie">Grill</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--_________________________________________________________ PASTE _________________________________________________________-->
+
+                <!-- crispy chicken -->
+                <div class="item" data-id="paste">
+                    <div class="inner">
+                        <div class="container1">
+                            <img src="/img/recipes/paste/crispy chicken.png" alt="crispy chicken" class="image">
+                            <div class="overlay">
+                                <div class="text">Crispy chicken</div>
+                                <div class="sectie">Paste</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- meat balls -->
+                <div class="item" data-id="paste">
+                    <div class="inner">
+                        <div class="container1">
+                            <img src="/img/recipes/paste/meat balls.png" alt="meat balls" class="image">
+                            <div class="overlay">
+                                <div class="text">Meat balls</div>
+                                <div class="sectie">Paste</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- cheese balls -->
+                <div class="item" data-id="paste">
+                    <div class="inner">
+                        <div class="container1">
+                            <img src="/img/recipes/paste/cheese balls.png" alt="cheese balls" class="image">
+                            <div class="overlay">
+                                <div class="text">Cheese balls</div>
+                                <div class="sectie">Paste</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ravioli cu ricotta -->
+                <div class="item" data-id="paste">
+                    <div class="inner">
+                        <div class="container1">
+                            <img src="/img/recipes/paste/ravioli cu ricotta.png" alt="ravioli cu ricotta" class="image">
+                            <div class="overlay">
+                                <div class="text">Ravioli cu ricotta</div>
+                                <div class="sectie">Paste</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- midii -->
+                <div class="item" data-id="paste">
+                    <div class="inner">
+                        <div class="container1">
+                            <img src="/img/recipes/paste/img.png" alt="" class="image">
+                            <div class="overlay">
+                                <div class="text">Midii</div>
+                                <div class="sectie">Paste</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- pui asiatic -->
+                <div class="item" data-id="paste">
+                    <div class="inner">
+                        <div class="container1">
+                            <img src="/img/recipes/paste/img.png" alt="" class="image">
+                            <div class="overlay">
+                                <div class="text">Pui asiatic</div>
+                                <div class="sectie">Paste</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- snitel vienez -->
+                <div class="item" data-id="paste">
+                    <div class="inner">
+                        <div class="container1">
+                            <img src="/img/recipes/paste/img.png" alt="" class="image">
+                            <div class="overlay">
+                                <div class="text">Snitel vienez</div>
+                                <div class="sectie">Paste</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--_______________________________________________________ PIZZA VATRĂ _______________________________________________________-->
+
+                <!-- margherita -->
+                <div class="item" data-id="pizzav">
+                    <div class="inner">
+                        <div class="container1">
+                            <a href="#" target="_blank"><img src="/img/recipes/pizzav/margherita.png" alt="margherita"
+                                    class="image"></a>
+                            <div class="overlay">
+                                <div class="text">Margherita</div>
+                                <div class="sectie">Pizza V</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- diavola -->
+                <div class="item" data-id="pizzav">
+                    <div class="inner">
+                        <div class="container1">
+                            <a href="#" target="_blank"><img src="/img/recipes/pizzav/diavola.png" alt="diavola"
+                                    class="image"></a>
+                            <div class="overlay">
+                                <div class="text">Diavola</div>
+                                <div class="sectie">Pizza V</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- canibale -->
+                <div class="item" data-id="pizzav">
+                    <div class="inner">
+                        <div class="container1">
+                            <a href="#" target="_blank"><img src="/img/recipes/pizzav/canibale.png" alt="canibale"
+                                    class="image"></a>
+                            <div class="overlay">
+                                <div class="text">Canibale</div>
+                                <div class="sectie">Pizza V</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- bambino -->
+                <div class="item" data-id="pizzav">
+                    <div class="inner">
+                        <div class="container1">
+                            <a href="#" target="_blank"><img src="/img/recipes/pizzav/bambino.png" alt="bambino"
+                                    class="image"></a>
+                            <div class="overlay">
+                                <div class="text">Bambino</div>
+                                <div class="sectie">Pizza V</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- capriciosa -->
+                <div class="item" data-id="pizzav">
+                    <div class="inner">
+                        <div class="container1">
+                            <a href="#" target="_blank"><img src="/img/recipes/pizzav/capriciosa.png" alt="capriciosa"
+                                    class="image"></a>
+                            <div class="overlay">
+                                <div class="text">Capriciosa</div>
+                                <div class="sectie">Pizza V</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- prosciutto e funghi -->
+                <div class="item" data-id="pizzav">
+                    <div class="inner">
+                        <div class="container1">
+                            <a href="#" target="_blank"><img src="/img/recipes/pizzav/prosciutto e funghi.png"
+                                    alt="prosciutto e funghi" class="image"></a>
+                            <div class="overlay">
+                                <div class="text">Prosciutto e funghi</div>
+                                <div class="sectie">Pizza V</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- tonno e cipolla -->
+                <div class="item" data-id="pizzav">
+                    <div class="inner">
+                        <div class="container1">
+                            <a href="#" target="_blank"><img src="/img/recipes/pizzav/tonno e cipolla.png"
+                                    alt="quattro formaggi" class="image"></a>
+                            <div class="overlay">
+                                <div class="text">Tonno e cipolla</div>
+                                <div class="sectie">Pizza V</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- quattro formaggi -->
+                <div class="item" data-id="pizzav">
+                    <div class="inner">
+                        <div class="container1">
+                            <a href="#" target="_blank"><img src="/img/recipes/pizzav/quattro formaggi.png"
+                                    alt="quattro formaggi" class="image"></a>
+                            <div class="overlay">
+                                <div class="text">Quattro formaggi</div>
+                                <div class="sectie">Pizza V</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- prosciutto -->
+                <div class="item" data-id="pizzav">
+                    <div class="inner">
+                        <div class="container1">
+                            <a href="#" target="_blank"><img src="/img/recipes/pizzav/prosciutto.png" alt="prosciutto"
+                                    class="image"></a>
+                            <div class="overlay">
+                                <div class="text">Prosciutto</div>
+                                <div class="sectie">Pizza V</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- quattro stagione -->
+                <div class="item" data-id="pizzav">
+                    <div class="inner">
+                        <div class="container1">
+                            <a href="#" target="_blank"><img src="/img/recipes/pizzav/quattro stagione.png"
+                                    alt="quattro stagione" class="image"></a>
+                            <div class="overlay">
+                                <div class="text">Quattro stagione</div>
+                                <div class="sectie">Pizza V</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- focaccia clasica -->
+                <div class="item" data-id="pizzav">
+                    <div class="inner">
+                        <div class="container1">
+                            <a href="#" target="_blank"><img src="/img/recipes/pizzav/focaccia clasica.png"
+                                    alt="focaccia clasica" class="image"></a>
+                            <div class="overlay">
+                                <div class="text">Focaccia clasica</div>
+                                <div class="sectie">Pizza V</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- placinta cu burduf si ceapa -->
+                <div class="item" data-id="pizzav">
+                    <div class="inner">
+                        <div class="container1">
+                            <a href="#" target="_blank"><img src="/img/recipes/pizzav/placinta cu burduf si ceapa.png"
+                                    alt="placinta cu burduf si ceapa" class="image"></a>
+                            <div class="overlay">
+                                <div class="text">Placinta cu burduf si ceapa</div>
+                                <div class="sectie">Pizza V</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- pala affumicata -->
+                <div class="item" data-id="pizzav">
+                    <div class="inner">
+                        <div class="container1">
+                            <a href="#" target="_blank"><img src="/img/recipes/pizzav/img.png" alt="pala affumicata"
+                                    class="image"></a>
+                            <div class="overlay">
+                                <div class="text">Pala Affumicata</div>
+                                <div class="sectie">Pizza V</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- pala contadina -->
+                <div class="item" data-id="pizzav">
+                    <div class="inner">
+                        <div class="container1">
+                            <a href="#" target="_blank"><img src="/img/recipes/pizzav/img.png" alt="pala contadina"
+                                    class="image"></a>
+                            <div class="overlay">
+                                <div class="text">Pala Contadina</div>
+                                <div class="sectie">Pizza V</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- pala nobila -->
+                <div class="item" data-id="pizzav">
+                    <div class="inner">
+                        <div class="container1">
+                            <a href="#" target="_blank"><img src="/img/recipes/pizzav/img.png" alt="pala nobila"
+                                    class="image"></a>
+                            <div class="overlay">
+                                <div class="text">Pala Nobila</div>
+                                <div class="sectie">Pizza V</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- pala regina -->
+                <div class="item" data-id="pizzav">
+                    <div class="inner">
+                        <div class="container1">
+                            <a href="#" target="_blank"><img src="/img/recipes/pizzav/img.png" alt="pala regina"
+                                    class="image"></a>
+                            <div class="overlay">
+                                <div class="text">Pala Regina</div>
+                                <div class="sectie">Pizza V</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--________________________________________________________ PAS ________________________________________________________-->
+
+                <!-- gulas unguresc -->
+                <div class="item" data-id="pas">
+                    <div class="inner">
+                        <div class="container1">
+                            <img src="/img/recipes/pas/gulas unguresc.png" alt="gulas unguresc" class="image">
+                            <div class="overlay">
+                                <div class="text">Gulas unguresc</div>
+                                <div class="sectie">Pas</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ciorba de pui a la grec -->
+                <div class="item" data-id="pas">
+                    <div class="inner">
+                        <div class="container1">
+                            <img src="/img/recipes/pas/a la grec.png" alt="a la grec" class="image">
+                            <div class="overlay">
+                                <div class="text">Ciorba de pui a la grec</div>
+                                <div class="sectie">Pas</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ciorba taraneasca -->
+                <div class="item" data-id="pas">
+                    <div class="inner">
+                        <div class="container1">
+                            <img src="/img/recipes/pas/img.png" alt="" class="image">
+                            <div class="overlay">
+                                <div class="text">Ciorba taraneasca</div>
+                                <div class="sectie">Pas</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--____________________________________________________ PIZZA CUPTOR ___________________________________________________-->
+
+                <!-- lasagna -->
+                <div class="item" data-id="pizzac">
+                    <div class="inner">
+                        <div class="container1">
+                            <img src="/img/recipes/paste/lasagna.png" alt="lasagna" class="image">
+                            <div class="overlay">
+                                <div class="text">Lasagna</div>
+                                <div class="sectie">Pizza C</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- tarta de pui -->
+                <div class="item" data-id="pizzac">
+                    <div class="inner">
+                        <div class="container1">
+                            <img src="/img/recipes/paste/img.png" alt="" class="image">
+                            <div class="overlay">
+                                <div class="text">Tarta de pui</div>
+                                <div class="sectie">Pizza C</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- tarta de somon -->
+                <div class="item" data-id="pizzac">
+                    <div class="inner">
+                        <div class="container1">
+                            <img src="/img/recipes/paste/img.png" alt="" class="image">
+                            <div class="overlay">
+                                <div class="text">Tarta de somon</div>
+                                <div class="sectie">Pizza C</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--______________________________________________________ PRĂJELI ______________________________________________________-->
+
+                <!-- cartofi cu avocado -->
+                <div class="item" data-id="prajeli">
+                    <div class="inner">
+                        <div class="container1">
+                            <img src="/img/recipes/fried/cartofi cu avocado.png" alt="cartofi cu avocado" class="image">
+                            <div class="overlay">
+                                <div class="text">Cartofi cu avocado</div>
+                                <div class="sectie">Prăjeli</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- cartofi cu usturoi -->
+                <div class="item" data-id="prajeli">
+                    <div class="inner">
+                        <div class="container1">
+                            <img src="/img/recipes/fried/cartofi cu usturoi.png" alt="cartofi cu usturoi" class="image">
+                            <div class="overlay">
+                                <div class="text">Cartofi cu usturoi</div>
+                                <div class="sectie">Prăjeli</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- cartofi cu ragu -->
+                <div class="item" data-id="prajeli">
+                    <div class="inner">
+                        <div class="container1">
+                            <img src="/img/recipes/fried/cartofi cu ragu.png" alt="cartofi cu ragu" class="image">
+                            <div class="overlay">
+                                <div class="text">Cartofi cu ragu</div>
+                                <div class="sectie">Prăjeli</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- calamari pane -->
+                <div class="item" data-id="prajeli">
+                    <div class="inner">
+                        <div class="container1">
+                            <img src="/img/recipes/fried/calamari pane.png" alt="calamari pane" class="image">
+                            <div class="overlay">
+                                <div class="text">Calamari pane</div>
+                                <div class="sectie">Prăjeli</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- jumeri -->
+                <div class="item" data-id="prajeli">
+                    <div class="inner">
+                        <div class="container1">
+                            <img src="/img/recipes/fried/img.png" alt="" class="image">
+                            <div class="overlay">
+                                <div class="text">Jumeri</div>
+                                <div class="sectie">Prăjeli</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- pleurotus pane -->
+                <div class="item" data-id="prajeli">
+                    <div class="inner">
+                        <div class="container1">
+                            <img src="/img/recipes/fried/img.png" alt="" class="image">
+                            <div class="overlay">
+                                <div class="text">Pleurotus pane</div>
+                                <div class="sectie">Prăjeli</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!--_______________________________________________________ DESERT _______________________________________________________-->
+
+                <!-- pavlova -->
+                <div class="item" data-id="desert">
+                    <div class="inner">
+                        <div class="container1">
+                            <img src="/img/recipes/desert/pavlova.png" alt="pavlova" class="image">
+                            <div class="overlay">
+                                <div class="text">Pavlova</div>
+                                <div class="sectie">Desert</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- lava cake -->
+                <div class="item" data-id="desert">
+                    <div class="inner">
+                        <div class="container1">
+                            <img src="/img/recipes/desert/lava cake.png" alt="lava cake" class="image">
+                            <div class="overlay">
+                                <div class="text">Lava cake</div>
+                                <div class="sectie">Desert</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- cheesecake -->
+                <div class="item" data-id="desert">
+                    <div class="inner">
+                        <div class="container1">
+                            <img src="/img/recipes/desert/cheesecake.png" alt="cheesecake" class="image">
+                            <div class="overlay">
+                                <div class="text">Cheesecake</div>
+                                <div class="sectie">Desert</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- inghetata asortata -->
+                <div class="item" data-id="desert">
+                    <div class="inner">
+                        <div class="container1">
+                            <img src="/img/recipes/desert/inghetata asortata.png" alt="inghetata" class="image">
+                            <div class="overlay">
+                                <div class="text">Inghetată asortata</div>
+                                <div class="sectie">Desert</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- cheesecake vegan -->
+                <div class="item" data-id="desert">
+                    <div class="inner">
+                        <div class="container1">
+                            <img src="/img/recipes/desert/cheesecake vegan.png" alt="cheesecake vegan" class="image">
+                            <div class="overlay">
+                                <div class="text">Cheesecake vegan</div>
+                                <div class="sectie">Desert</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- tiramisu -->
+                <div class="item" data-id="desert">
+                    <div class="inner">
+                        <div class="container1">
+                            <img src="/img/recipes/desert/tiramisu.png" alt="tiramisu" class="image">
+                            <div class="overlay">
+                                <div class="text">Tiramisu</div>
+                                <div class="sectie">Desert</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- tarta cu caramel -->
+                <div class="item" data-id="desert">
+                    <div class="inner">
+                        <div class="container1">
+                            <img src="/img/recipes/desert/img.png" alt="" class="image">
+                            <div class="overlay">
+                                <div class="text">Tarta cu caramel</div>
+                                <div class="sectie">Desert</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- buturuga -->
+                <div class="item" data-id="desert">
+                    <div class="inner">
+                        <div class="container1">
+                            <img src="/img/recipes/desert/img.png" alt="" class="image">
+                            <div class="overlay">
+                                <div class="text">Buturuga</div>
+                                <div class="sectie">Desert</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </section>
+
+    <!-- navbar -->
+
+    <nav class="navbar">
+        <ul class="navbar-items">
+            <li class="navbar-item"> <a href="/index.html" class="navbar-link active-link">
+                    <i class="fa-solid fa-house"></i>
+                    <p class="navbar-text">Acasă</p>
+                </a> </li>
+            <li class="navbar-item"> <a href="#recipes" class="navbar-link">
+                    <i class="fa-solid fa-bell-concierge"></i>
+                    <p class="navbar-text">À la carte</p>
+                </a> </li>
+            <li class="navbar-item"> <a href="/pages/mise en place/mise.html" class="navbar-link">
+                    <i class="fa-solid fa-utensils"></i>
+                    <p class="navbar-text">Mise en place</p>
+                </a> </li>
+            <li class="navbar-item"> <a href="/pages/rules.html" class="navbar-link">
+                    <i class="fa-solid fa-scale-balanced"></i>
+                    <p class="navbar-text">Regulament</p>
+                </a> </li>
+            <li class="navbar-item"> <a href="/pages/knowledge.html" class="navbar-link">
+                    <i class="fa-solid fa-mobile-screen"></i>
+                    <p class="navbar-text">Informații</p>
+                </a> </li>
+        </ul>
+    </nav>
+
+</body>
+
+</html>
