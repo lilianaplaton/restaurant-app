@@ -61,15 +61,20 @@
     }
 
     /* article-pages */
+    .btn-pages {
+        padding: 50px;
+        margin-bottom: 70px;
+    }
+
     .open-button {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        margin-top: 50px;
         border: 0.1px solid #00000040;
         border-radius: 10px;
         width: 100%;
         height: 60px;
+        margin: 15px 0;
     }
 
     .open-button:hover {
@@ -109,6 +114,7 @@
 
     .link i {
         font-size: 22px;
+        marginright: 0;
     }
 </style>
 
@@ -155,80 +161,76 @@
                     </div>
                 </div>
                 <!--article pages-->
-                <div class="btn-pages">
-                    <div class="item" data-id="aparatura">
-                        <div class="inner">
-                            <div class="open-button">
-                                <a href="#" target="_blank">
-                                    <div class="img-container"><img src="/pages/knowledge/cuptor.png"></div>
-                                    <div class="btn-txt">
-                                        <p>Inabușire și afumare</p>
-                                    </div>
-                                    <div class="link"><i class="fa-solid fa-arrow-up-right-from-square"></i></div>
-                                </a>
-                            </div>
+                <div class="item" data-id="aparatura">
+                    <div class="inner">
+                        <div class="open-button">
+                            <a href="#" target="_blank">
+                                <div class="img-container"><img src="/pages/knowledge/cuptor.png"></div>
+                                <div class="btn-txt">
+                                    <p>Inabușire și afumare</p>
+                                </div>
+                                <div class="link"><i class="fa-solid fa-arrow-up-right-from-square"></i></div>
+                            </a>
                         </div>
                     </div>
-                    <!--article pages-->
-                    <div class="btn-pages">
-                        <div class="item" data-id="aparatura">
-                            <div class="inner">
-                                <div class="open-button">
-                                    <a href="#" target="_blank">
-                                        <div class="img-container"><img src="/pages/knowledge/tocator.png"></div>
-                                        <div class="btn-txt">
-                                            <p>Montare tocător</p>
-                                        </div>
-                                        <div class="link"><i class="fa-solid fa-arrow-up-right-from-square"></i></div>
-                                    </a>
+                </div>
+                <!--article pages-->
+                <div class="item" data-id="aparatura">
+                    <div class="inner">
+                        <div class="open-button">
+                            <a href="#" target="_blank">
+                                <div class="img-container"><img src="/pages/knowledge/tocator.png"></div>
+                                <div class="btn-txt">
+                                    <p>Montare tocător</p>
                                 </div>
-                            </div>
+                                <div class="link"><i class="fa-solid fa-arrow-up-right-from-square"></i></div>
+                            </a>
                         </div>
-                        <!--article pages-->
-                        <div class="btn-pages">
-                            <div class="item" data-id="personal">
-                                <div class="inner">
-                                    <div class="open-button">
-                                        <a href="#" target="_blank">
-                                            <div class="img-container"><img src="#"></div>
-                                            <div class="btn-txt">
-                                                <p>Meniu personal</p>
-                                            </div>
-                                            <div class="link"><i class="fa-solid fa-arrow-up-right-from-square"></i>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-
-                        <!-- navbar -->
-                        <nav class="navbar">
-                            <ul class="navbar-items">
-                                <li class="navbar-item"> <a href="/index.html" class="navbar-link active-link">
-                                        <i class="fa-solid fa-house"></i>
-                                        <p class="navbar-text">Acasă</p>
-                                    </a> </li>
-                                <li class="navbar-item"> <a href="/pages/recipes/recipes.html" class="navbar-link">
-                                        <i class="fa-solid fa-bell-concierge"></i>
-                                        <p class="navbar-text">À la carte</p>
-                                    </a> </li>
-                                <li class="navbar-item"> <a href="/pages/mise en place/mise.html" class="navbar-link">
-                                        <i class="fa-solid fa-utensils"></i>
-                                        <p class="navbar-text">Mise en place</p>
-                                    </a> </li>
-                                <li class="navbar-item"> <a href="/pages/rules.html" class="navbar-link">
-                                        <i class="fa-solid fa-scale-balanced"></i>
-                                        <p class="navbar-text">Regulament</p>
-                                    </a> </li>
-                                <li class="navbar-item"> <a href="#knowledge" class="navbar-link">
-                                        <i class="fa-solid fa-mobile-screen"></i>
-                                        <p class="navbar-text">Informații</p>
-                                    </a> </li>
-                            </ul>
-                        </nav>
                     </div>
+                </div>
+                <!--article pages-->
+                <div class="item" data-id="personal">
+                    <div class="inner">
+                        <div class="open-button">
+                            <a href="#" target="_blank">
+                                <div class="img-container"><img src=""></div>
+                                <div class="btn-txt">
+                                    <p>Meniu personal</p>
+                                </div>
+                                <div class="link"><i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- navbar -->
+        <nav class="navbar">
+            <ul class="navbar-items">
+                <li class="navbar-item"> <a href="/index.html" class="navbar-link active-link">
+                        <i class="fa-solid fa-house"></i>
+                        <p class="navbar-text">Acasă</p>
+                    </a> </li>
+                <li class="navbar-item"> <a href="/pages/recipes/recipes.html" class="navbar-link">
+                        <i class="fa-solid fa-bell-concierge"></i>
+                        <p class="navbar-text">À la carte</p>
+                    </a> </li>
+                <li class="navbar-item"> <a href="/pages/mise en place/mise.html" class="navbar-link">
+                        <i class="fa-solid fa-utensils"></i>
+                        <p class="navbar-text">Mise en place</p>
+                    </a> </li>
+                <li class="navbar-item"> <a href="/pages/rules.html" class="navbar-link">
+                        <i class="fa-solid fa-scale-balanced"></i>
+                        <p class="navbar-text">Regulament</p>
+                    </a> </li>
+                <li class="navbar-item"> <a href="#knowledge" class="navbar-link">
+                        <i class="fa-solid fa-mobile-screen"></i>
+                        <p class="navbar-text">Informații</p>
+                    </a> </li>
+            </ul>
+        </nav>
+        </div>
     </section>
 
     <!--JavaScript_filter buttons pages-->
