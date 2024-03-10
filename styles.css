@@ -26,7 +26,7 @@
 
 .logo img {
     padding: 40px 0 40px;
-    width: 90%;
+    width: 100%;
     height: auto;
 }
 
@@ -37,7 +37,7 @@
 }
 
 .chef img {
-    width: 85%;
+    width: 100%;
     height: auto;
 }
 
@@ -63,6 +63,7 @@ h4 {
 }
 
 /* languages */
+
 .languages button {
     display: flex;
     justify-content: center;
