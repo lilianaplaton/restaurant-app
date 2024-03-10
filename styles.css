@@ -16,18 +16,14 @@
 
 .container {
     width: 100%;
-
-
     display: flex;
     align-items: center;
-
     text-align: center;
     flex-direction: column;
-
 }
 
 .logo img {
-    margin-top: 50px;
+    margin: 40px 0 40px;
     width: 90%;
     height: auto;
 }
@@ -35,11 +31,11 @@
 .chef {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 15px;
 }
 
 .chef img {
-    width: 100%;
+    width: 90%;
     height: auto;
 }
 
@@ -54,7 +50,7 @@ h1 {
     font-family: "Amatic SC", sans-serif;
     font-weight: 400;
     font-size: 40px;
-    margin-bottom: 10px;
+    margin-bottom: 50px;
 }
 
 h4 {
