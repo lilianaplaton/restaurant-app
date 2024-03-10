@@ -16,13 +16,13 @@
 
 .container {
     width: 100%;
-    height: 100vh;
+    height: 90vh;
     display: flex;
     align-items: center;
     text-align: center;
     justify-content: space-between;
     flex-direction: column;
-    padding-bottom: 110px;
+
 }
 
 .logo img {
