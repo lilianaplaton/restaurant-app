@@ -16,14 +16,15 @@
 
 .container {
     width: 100%;
-    margin-bottom: 40px;
+    height: 100vh;
+    margin-bottom: 130px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     text-align: center;
     flex-direction: column;
     object-fit: cover;
-    gap: 50px;
+    gap: 40px;
 }
 
 .logo img {
@@ -150,30 +151,19 @@ h4 {
 
 /* images */
 
-.images {
-    position: relative;
-}
-
 .pan {
-    width: 130px;
+    width: 120px;
     position: absolute;
-    bottom: 30px;
-    right: 70px;
+    bottom: -50px;
+    left: 0;
 }
 
 .cute {
     position: absolute;
-    bottom: 230px;
-    left: 90px;
-    width: 60px;
+    bottom: 95px;
+    right: 10px;
 }
 
-.meat {
-    position: absolute;
-    bottom: 70px;
-    left: 90px;
-    width: 50px;
-}
 
 
 /*________________________ breakpoints ________________________*/
