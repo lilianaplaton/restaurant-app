@@ -27,20 +27,24 @@
                     <h1>Bine ai venit!</h1>
                 </div>
             </div>
-            <div class="select">
-                <div class="choose">
-                    <h4>Alege limba dorită</h4>
-                </div>
-                <div class="languages">
-                    <button class="btn-ro">
-                        <img src="img/home/ro.svg" alt="flag-ro">
-                        <p>Română</p>
-                    </button>
-                    <button class="btn-en">
-                        <img src="img/home/en.svg" alt="flag-en">
-                        <p>Engleză</p>
-                    </button>
-                </div>
+            <div class="language-switch">
+                <select id="language-select">
+                    <option value="en">
+                        <img src="/img/home/ro.svg">
+                        English
+                    </option>
+                    <option value="fr">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Flag_of_France.svg/16px-Flag_of_France.svg.png"
+                            alt="Français" width="20" height="15">
+                        Français
+                    </option>
+                    <option value="de">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Flag_of_Germany.svg/16px-Flag_of_Germany.svg.png"
+                            alt="Deutsch" width="20" height="15">
+                        Deutsch
+                    </option>
+                    <!-- add more options as needed -->
+                </select>
             </div>
         </div>
 
@@ -72,6 +76,18 @@
                 </a> </li>
         </ul>
     </nav>
+
+
+
+    <script>
+        $(function () {
+            $('#language-select').change(function () {
+                var language = $(this).val();
+                window.location.href = window.location.origin + '/' + language + '/';
+            });
+        });
+    </script>
+
 </body>
 
 </html>

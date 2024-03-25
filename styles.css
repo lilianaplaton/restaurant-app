@@ -41,13 +41,6 @@
     height: auto;
 }
 
-.select {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    gap: 15px;
-}
-
 h1 {
     font-family: "Amatic SC", sans-serif;
     font-weight: 400;
@@ -63,11 +56,7 @@ h4 {
 }
 
 /* languages */
-
-.languages button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+#language-select {
     background: #FFF;
     border-radius: 10px;
     border: none;
