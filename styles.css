@@ -100,7 +100,7 @@ h4 {
 .navbar-items {
     display: flex;
     justify-content: space-around;
-    margin: 12px 5px 6px 5px;
+    margin: 14px 5px 6px 5px;
 }
 
 .navbar-item {
@@ -116,7 +116,7 @@ h4 {
 }
 
 .fa-solid {
-    font-size: 18px;
+    font-size: 19px;
     opacity: 0.6;
 }
 
