@@ -92,15 +92,15 @@ h4 {
     bottom: 0;
     width: 100%;
     background-color: rgb(255, 255, 255);
-    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.043);
     z-index: 999;
-    border-radius: 35px 35px 0 0;
+
 }
 
 .navbar-items {
     display: flex;
     justify-content: space-around;
-    margin: 17px 5px 10px 5px;
+    margin: 12px 5px 6px 5px;
 }
 
 .navbar-item {
@@ -116,7 +116,7 @@ h4 {
 }
 
 .fa-solid {
-    font-size: 20px;
+    font-size: 18px;
     opacity: 0.6;
 }
 
@@ -124,7 +124,7 @@ h4 {
     font-size: 9px;
     letter-spacing: 0.3px;
     font-weight: 400;
-    padding: 8px;
+    padding: 7px;
     transition: ease-in .1s;
     color: #000;
     opacity: 0.8;
