@@ -28,6 +28,7 @@
                 </div>
             </div>
             <div class="language-switch">
+                <h4>Alege limba dorita</h4>
                 <select id="language-select">
                     <option value="ro">
                         <img src="" alt="romana">
@@ -69,17 +70,6 @@
                 </a> </li>
         </ul>
     </nav>
-
-
-
-    <script>
-        $(function () {
-            $('#language-select').change(function () {
-                var language = $(this).val();
-                window.location.href = window.location.origin + '/' + language + '/';
-            });
-        });
-    </script>
 
 </body>
 
