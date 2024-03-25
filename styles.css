@@ -94,13 +94,12 @@ h4 {
     background-color: rgb(255, 255, 255);
     box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.043);
     z-index: 999;
-
 }
 
 .navbar-items {
     display: flex;
     justify-content: space-around;
-    margin: 14px 5px 6px 5px;
+    margin: 14px 8px 7px 8px;
 }
 
 .navbar-item {
@@ -129,7 +128,6 @@ h4 {
     color: #000;
     opacity: 0.8;
 }
-
 
 .fa-solid:hover {
     opacity: 1;
