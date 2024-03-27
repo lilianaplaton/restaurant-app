@@ -1,29 +1,16 @@
 
 /* search button */
 
-const searchInput = document.getElementById('search-input');
-const searchButton = document.getElementById('search-button');
-searchButton.addEventListener('click', () => {
-    const query = searchInput.value.toLowerCase();
-    const recipeItems = document.querySelectorAll('.gallery .item');
-    recipeItems.forEach(item => {
-        const text = item.textContent.toLowerCase();
-        if (text.includes(query)) {
-            item.style.display = 'block';
-        } else {
-            item.style.display = 'none';
-        }
-    });
-});
+function closeSearch() {
+    // This function will be called when the close button is clicked
+    // You can put any functionality you want here
+    document.getElementById('search').value = ''; // Clears the search bar
+    document.getElementById('search-container').style.display = 'none'; // Hides the search bar
+}
 
-document.getElementById('search-button').addEventListener('click', function () {
-    const searchInput = document.getElementById('search-input');
-    const searchText = searchInput.value.trim();
-    if (searchText) {
-        console.log('Căutare pentru:', searchText);
-    } else {
-        alert('Câmpul de căutare este gol. Vă rugăm să introduceți un termen de căutare.');
-    }
+document.getElementById('search').addEventListener('click', function () {
+    // This function will be called when the search bar is clicked
+    document.getElementById('search-container').style.display = 'block'; // Shows the search bar
 });
 
 
