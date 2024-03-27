@@ -73,17 +73,24 @@
         text-align: center;
     }
 
+    .fill {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        cursor: pointer;
+        padding: 8px;
+        padding-top: 8px;
+    }
+
     .fill img {
-        margin: 15px;
+        background-color: #EEFBF2;
+        border-radius: 10px;
+        padding: 6px;
         width: 60px;
-        height: 54px;
+        height: 55px;
         transition: ease-in .2s;
     }
 
-    .fill img:hover {
-        color: black;
-        transition: ease-in .2s;
-    }
 
     .icon-img {
         width: 100%;
@@ -91,12 +98,15 @@
         cursor: pointer;
     }
 
+    .fill img:hover {
+        background-color: #3C7063;
+    }
 
     .txt {
         font-size: 9px;
-        margin-top: -12px;
-        margin-bottom: 10px;
-        color: rgba(0, 0, 0, 0.765);
+        margin-top: 5px;
+
+        color: rgba(0, 0, 0, 0.861);
         cursor: pointer;
         transition: ease-in .2s;
     }
