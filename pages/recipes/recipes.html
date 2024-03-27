@@ -68,17 +68,15 @@
     }
 
     .filter-buttons ul {
-        display: flex;
-
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
         text-align: center;
     }
 
-
-
     .fill img {
-        margin: 10px;
-        width: 30px;
-        height: 30px;
+        margin: 15px;
+        width: 50px;
+        height: 46px;
         transition: ease-in .2s;
     }
 
@@ -91,7 +89,7 @@
 
     .txt {
         font-size: 8px;
-        margin-top: -6px;
+        margin-top: -14px;
         color: rgba(0, 0, 0, 0.685);
         cursor: pointer;
     }
