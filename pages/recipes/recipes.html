@@ -30,33 +30,45 @@
 
     /* search button */
 
-    .search {
+    .search-container {
         position: relative;
-        display: block;
-        width: 75%;
+        width: 50%;
+        margin: auto;
     }
 
-    #search-input {
-        border-radius: 15px;
-        border: 1px solid rgba(60, 112, 99, 0.09);
-        box-shadow: 2px 2px 0.9px 0px rgba(60, 112, 99, 0.31);
-        padding: 8px 12px;
-        font-size: 14px;
+    #search {
         width: 100%;
-        overflow: hidden;
+        padding: 8px 10px;
+        border: 1px solid #ccc;
+        border-right: none;
     }
 
-    #search-button {
-        padding: 7.5px 20px;
-        font-size: 10px;
-        background-color: #d0eeda;
-        color: #fff;
-        border: none;
-        border-radius: 0 15px 15px 0;
-        cursor: pointer;
+
+    #search-icon {
         position: absolute;
-        right: 0;
         top: 0;
+        right: 0;
+        padding: 8px 10px;
+        border: none;
+        background-color: #f1f1f1;
+    }
+
+    #close-btn {
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: 8px 10px;
+        border: none;
+        background-color: #f1f1f1;
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    .list-item {
+        padding: 10px;
+        border-bottom: 1px solid #ccc;
     }
 
     /* filtering recipes */
@@ -104,9 +116,8 @@
     }
 
     .txt {
-        font-size: 9px;
+        font-size: 10px;
         margin-top: 5px;
-
         color: rgba(0, 0, 0, 0.861);
         cursor: pointer;
         transition: ease-in .2s;
@@ -167,16 +178,11 @@
             <h1>À La Carte</h1>
         </div>
         <!-- search bar -->
-        <div class="search">
-            <input type="text" id="search-input" placeholder="Caută rețetă...">
-            <button id="search-button">
-                <i class="fa-solid fa-magnifying-glass"></i>
-            </button>
-        </div>
-
         <div class="search-container">
-            <input type="text" id="search" placeholder="Search...">
-            <button id="close-search" onclick="closeSearch()">Close</button>
+            <input id="search" type="text" placeholder="Search..." autocomplete="off">
+            <button id="search-btn"></button>
+            <button id="search-icon"><i class="fas fa-search"></i></button>
+            <button id="close-btn" class="hidden"><i class="fas fa-times"></i></button>
         </div>
         <!-- filter butons -->
         <div class="filter-buttons">
@@ -1127,6 +1133,8 @@
                 </a> </li>
         </ul>
     </nav>
+
+
 
 
 </body>

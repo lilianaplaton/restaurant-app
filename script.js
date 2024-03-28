@@ -1,17 +1,59 @@
 
 /* search button */
 
-function closeSearch() {
-    // This function will be called when the close button is clicked
-    // You can put any functionality you want here
-    document.getElementById('search').value = ''; // Clears the search bar
-    document.getElementById('search-container').style.display = 'none'; // Hides the search bar
+const searchBtn = document.getElementById('search-btn');
+const searchIcon = document.getElementById('search-icon');
+const closeBtn = document.getElementById('close-btn');
+const listItems = document.querySelectorAll('.gallery .item');
+
+function searchItems() {
+    let searchTerm = search.value.toLowerCase();
+
+    listItems.forEach((item) => {
+        if (item.textContent.toLowerCase().includes(searchTerm)) {
+            item.classList.remove('hidden');
+        } else {
+            item.classList.add('hidden');
+        }
+    });
+
+    if (searchTerm === '') {
+        listItems.forEach((item) => {
+            item.classList.remove('hidden');
+        });
+    }
+
+    updateCloseBtn();
 }
 
-document.getElementById('search').addEventListener('click', function () {
-    // This function will be called when the search bar is clicked
-    document.getElementById('search-container').style.display = 'block'; // Shows the search bar
-});
+function showSearch() {
+    search.focus();
+    searchIcon.classList.add('hidden');
+    searchBtn.classList.add('hidden');
+    closeBtn.classList.remove('hidden');
+}
+
+function hideSearch() {
+    search.value = '';
+    searchItems();
+    searchIcon.classList.remove('hidden');
+    searchBtn.classList.remove('hidden');
+    closeBtn.classList.add('hidden');
+}
+
+function updateCloseBtn() {
+    if (search.value === '') {
+        closeBtn.classList.add('hidden');
+    } else {
+        closeBtn.classList.remove('hidden');
+    }
+}
+
+search.addEventListener('input', searchItems);
+searchBtn.addEventListener('click', searchItems);
+searchIcon.addEventListener('click', showSearch);
+closeBtn.addEventListener('click', hideSearch);
+updateCloseBtn();
 
 
 /* filter gallery recipes */
@@ -38,7 +80,6 @@ for (let i = 0; i < filterButtons.length; i++) {
         }
     })
 }
-
 
 /* languages */
 
