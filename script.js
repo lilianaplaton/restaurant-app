@@ -1,59 +1,29 @@
 
 /* search button */
-
-const searchBtn = document.getElementById('search-btn');
-const searchIcon = document.getElementById('search-icon');
-const closeBtn = document.getElementById('close-btn');
-const listItems = document.querySelectorAll('.gallery .item');
-
-function searchItems() {
-    let searchTerm = search.value.toLowerCase();
-
-    listItems.forEach((item) => {
-        if (item.textContent.toLowerCase().includes(searchTerm)) {
-            item.classList.remove('hidden');
+const searchInput = document.getElementById('search-input');
+const searchButton = document.getElementById('search-button');
+searchButton.addEventListener('click', () => {
+    const query = searchInput.value.toLowerCase();
+    const recipeItems = document.querySelectorAll('.gallery .item');
+    recipeItems.forEach(item => {
+        const text = item.textContent.toLowerCase();
+        if (text.includes(query)) {
+            item.style.display = 'block';
         } else {
-            item.classList.add('hidden');
+            item.style.display = 'none';
         }
     });
+});
 
-    if (searchTerm === '') {
-        listItems.forEach((item) => {
-            item.classList.remove('hidden');
-        });
-    }
-
-    updateCloseBtn();
-}
-
-function showSearch() {
-    search.focus();
-    searchIcon.classList.add('hidden');
-    searchBtn.classList.add('hidden');
-    closeBtn.classList.remove('hidden');
-}
-
-function hideSearch() {
-    search.value = '';
-    searchItems();
-    searchIcon.classList.remove('hidden');
-    searchBtn.classList.remove('hidden');
-    closeBtn.classList.add('hidden');
-}
-
-function updateCloseBtn() {
-    if (search.value === '') {
-        closeBtn.classList.add('hidden');
+document.getElementById('search-button').addEventListener('click', function () {
+    const searchInput = document.getElementById('search-input');
+    const searchText = searchInput.value.trim();
+    if (searchText) {
+        console.log('Căutare pentru:', searchText);
     } else {
-        closeBtn.classList.remove('hidden');
+        alert('Câmpul de căutare este gol. Vă rugăm să introduceți un termen de căutare.');
     }
-}
-
-search.addEventListener('input', searchItems);
-searchBtn.addEventListener('click', searchItems);
-searchIcon.addEventListener('click', showSearch);
-closeBtn.addEventListener('click', hideSearch);
-updateCloseBtn();
+});
 
 
 /* filter gallery recipes */

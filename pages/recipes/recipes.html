@@ -30,53 +30,39 @@
 
     /* search button */
 
-    .search-container {
+    .search {
         position: relative;
-        width: 60%;
-        margin: auto;
+        display: block;
+        width: 75%;
     }
 
-    #search {
+    #search-input {
+        border-radius: 15px;
+        border: 1px solid rgba(60, 112, 99, 0.09);
+        box-shadow: 2px 2px 0.9px 0px rgba(60, 112, 99, 0.31);
+        padding: 8px 12px;
+        font-size: 14px;
         width: 100%;
-        padding: 8px 12px;
-        border: 1px solid #ccc;
-        border-right: none;
+        overflow: hidden;
     }
 
-    .search-btn {
-        display: none;
-    }
-
-    #search-icon {
-        position: absolute;
-        top: 0;
-        right: 0;
-        padding: 8px 12px;
+    #search-button {
+        padding: 8px 20px;
+        font-size: 10px;
+        background-color: #d0eeda;
+        color: #fff;
         border: none;
-        background-color: #f1f1f1;
-    }
-
-    #close-btn {
+        border-radius: 0 15px 15px 0;
+        cursor: pointer;
         position: absolute;
-        top: 0;
         right: 0;
-        padding: 8px 10px;
-        border: none;
-        background-color: #f1f1f1;
+        top: 0;
     }
 
-    .hidden {
-        display: none;
-    }
-
-    .list-item {
-        padding: 10px;
-        border-bottom: 1px solid #ccc;
-    }
 
     /* filtering recipes */
     .filter-buttons {
-        margin-bottom: 15px;
+        margin: 20px;
     }
 
     .filter-buttons li {
@@ -181,11 +167,11 @@
             <h1>À La Carte</h1>
         </div>
         <!-- search bar -->
-        <div class="search-container">
-            <input id="search" type="text" placeholder="Caută preparat..." autocomplete="off">
-            <button id="search-btn"></button>
-            <button id="search-icon"><i class="fas fa-search"></i></button>
-            <button id="close-btn" class="hidden"><i class="fas fa-times"></i></button>
+        <div class="search">
+            <input type="text" id="search-input" placeholder="Caută rețetă...">
+            <button id="search-button">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
         </div>
         <!-- filter butons -->
         <div class="filter-buttons">
@@ -1136,9 +1122,6 @@
                 </a> </li>
         </ul>
     </nav>
-
-
-
 
 </body>
 
